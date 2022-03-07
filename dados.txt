@@ -1,0 +1,12 @@
+total
+
+item = 1, 2, 3
+valor 1 = (preço base)*(item 1)
+valor 2 = (preço base)*(item 2)
+valor 3 = (preço base)*(item 3)
+
+desconto da revendedora = total*30%
+valor de custo = total-(desconto da revendedora)
+
+preço base = (valor de custo)/soma(item)
+
