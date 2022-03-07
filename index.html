@@ -7,32 +7,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/index.css">
     <title>Calculo de Kit</title>
+    <style>
+        @media screen and (min-width:300px) and (max-width:600px) {
+            main {
+                margin-left: 1em;
+                margin-right: 1em;
+                margin-top: 2em;
+            }
+            h1 {
+                font-size: 3em;
+            }
+            .tituloItem,
+            .res_item,
+            .res_Prod {
+                width: 7em;
+                font-size: 1.3em;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
 
     <main>
-        <h1>Cálculo de kit</h1>
-        <div>
-            <label for="total_kit">Total do Kit:</label>
-            <input type="number" name="total_kit" id="total_kit" onchange="calcula()">
 
+        <h1>Cálculo do KIT</h1>
+        <div id="div_calculo">
+            <div id="div_total">
+                <label for="total_kit">--- Total do Kit ---</label>
+                <input type="number" inputmode="decimal" min="0" step=".01" name="total_kit" id="total_kit" onchange="calcula()">
+            </div>
             <div id="Dados">
-                <p>Item 1 = </p>
-                <p id="res_item1" class="res_item"></p>
-                <p>Item 2 = </p>
-                <p id="res_item2" class="res_item"></p>
-                <p>Item 3 = </p>
-                <p id="res_item3" class="res_item"></p>
-
-                <p>Desconto da Revendedora: </p>
-                <p id="res_Revend" class="res_Prod"></p>
-                <p>Valor de Custo: </p>
-                <p id="res_Custo" class="res_Prod"></p>
-
+                <div id="div_itens">
+                    <div>
+                        <p class="tituloItem">Item 1</p>
+                        <p id="res_item1" class="res_item">---</p>
+                    </div>
+                    <div>
+                        <p class="tituloItem">Item 2</p>
+                        <p id="res_item2" class="res_item">---</p>
+                    </div>
+                    <div>
+                        <p class="tituloItem">Item 3</p>
+                        <p id="res_item3" class="res_item">---</p>
+                    </div>
+                </div>
+                <div id="div_Revend">
+                    <div>
+                        <p class="titulo_div_Revend">Desconto da Revendedora</p>
+                        <p id="res_Revend">---</p>
+                    </div>
+                    <div>
+                        <p class="titulo_div_Revend">Valor de Custo</p>
+                        <p id="res_Custo">---</p>
+                    </div>
+                </div>
             </div>
         </div>
+
     </main>
 
     <!-- Calculos -->
@@ -48,12 +81,32 @@
             var vlrItem2 = prcBase * 2
             var vlrItem3 = prcBase * 3
 
-            document.getElementById("res_item1").innerText = vlrItem1.toFixed(2)
-            document.getElementById("res_item2").innerText = vlrItem2.toFixed(2)
-            document.getElementById("res_item3").innerText = vlrItem3.toFixed(2)
+            document.getElementById("res_item1").innerText = vlrItem1.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL',
+                minimumFractionDigits: 2
+            })
+            document.getElementById("res_item2").innerText = vlrItem2.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL',
+                minimumFractionDigits: 2
+            })
+            document.getElementById("res_item3").innerText = vlrItem3.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL',
+                minimumFractionDigits: 2
+            })
 
-            document.getElementById("res_Revend").innerText = descVend.toFixed(2)
-            document.getElementById("res_Custo").innerText = vlrCusto.toFixed(2)
+            document.getElementById("res_Revend").innerText = descVend.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL',
+                minimumFractionDigits: 2
+            })
+            document.getElementById("res_Custo").innerText = vlrCusto.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL',
+                minimumFractionDigits: 2
+            })
 
         }
     </script>
