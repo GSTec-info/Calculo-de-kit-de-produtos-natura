@@ -5,38 +5,56 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/index.css">
     <title>Calculo de Kit</title>
 </head>
 
 <body>
-    <header>
-        <h1>Cálculo de kit</h1>
-    </header>
+
 
     <main>
+        <h1>Cálculo de kit</h1>
         <div>
             <label for="total_kit">Total do Kit:</label>
-            <input type="number" name="total_kit" id="total_kit">
+            <input type="number" name="total_kit" id="total_kit" onchange="calcula()">
 
-            <div>
+            <div id="Dados">
                 <p>Item 1 = </p>
-                <p id="res_item1"></p>
+                <p id="res_item1" class="res_item"></p>
                 <p>Item 2 = </p>
+                <p id="res_item2" class="res_item"></p>
                 <p>Item 3 = </p>
+                <p id="res_item3" class="res_item"></p>
 
                 <p>Desconto da Revendedora: </p>
+                <p id="res_Revend" class="res_Prod"></p>
                 <p>Valor de Custo: </p>
-                <button onclick="calcula()">Calcular</button>
+                <p id="res_Custo" class="res_Prod"></p>
+
             </div>
         </div>
     </main>
 
     <!-- Calculos -->
     <script>
-        calcula() {
-            let total = document.getElementById('total_kit').value
+        function calcula() {
+            var total = document.getElementById("total_kit").value
+            var somaItens = 1 + 2 + 3
+            var descVend = total * 0.3
+            var vlrCusto = total - descVend
+            var prcBase = vlrCusto / somaItens
 
-            document.getElementById('res_item1').contentEditable = total
+            var vlrItem1 = prcBase
+            var vlrItem2 = prcBase * 2
+            var vlrItem3 = prcBase * 3
+
+            document.getElementById("res_item1").innerText = vlrItem1.toFixed(2)
+            document.getElementById("res_item2").innerText = vlrItem2.toFixed(2)
+            document.getElementById("res_item3").innerText = vlrItem3.toFixed(2)
+
+            document.getElementById("res_Revend").innerText = descVend.toFixed(2)
+            document.getElementById("res_Custo").innerText = vlrCusto.toFixed(2)
+
         }
     </script>
 </body>
