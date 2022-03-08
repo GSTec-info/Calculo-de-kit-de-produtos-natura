@@ -64,7 +64,7 @@ label {
 }
 
 #div_total>label {
-    font-size: 2em;
+    font-size: 1.7em;
 }
 
 input {
@@ -99,10 +99,14 @@ input {
 
 .item_qtdProd>input {
     box-shadow: none;
-    width: 1em;
-    height: 1em;
+    width: 0.6em;
+    height: 0.6em;
     align-items: center;
     margin-bottom: 0px;
+}
+
+.item_qtdProd>label {
+    font-size: 1.3em;
 }
 
 #Dados>div {
