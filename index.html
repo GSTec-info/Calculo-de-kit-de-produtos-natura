@@ -121,7 +121,7 @@
 
             // Calculo para 3 itens
 
-            if (document.getElementById('qtd_Prod3').checked == true) {
+            function calcula3() {
                 var somaItens = 1 + 2 + 3
                 var prcBase = vlrCusto / somaItens
                 var vlrItem1 = prcBase
@@ -146,29 +146,12 @@
                 document.getElementById("res_item4").innerText = "---"
             }
 
-            document.getElementById('qtd_Prod3').onclick = function calcula3() {
-                var somaItens = 1 + 2 + 3
-                var prcBase = vlrCusto / somaItens
-                var vlrItem1 = prcBase
-                var vlrItem2 = prcBase * 2
-                var vlrItem3 = prcBase * 3
+            if (document.getElementById('qtd_Prod3').checked == true) {
+                calcula3()
+            }
 
-                document.getElementById("res_item1").innerText = vlrItem1.toLocaleString('pt-BR', {
-                    style: 'currency',
-                    currency: 'BRL',
-                    minimumFractionDigits: 2
-                })
-                document.getElementById("res_item2").innerText = vlrItem2.toLocaleString('pt-BR', {
-                    style: 'currency',
-                    currency: 'BRL',
-                    minimumFractionDigits: 2
-                })
-                document.getElementById("res_item3").innerText = vlrItem3.toLocaleString('pt-BR', {
-                    style: 'currency',
-                    currency: 'BRL',
-                    minimumFractionDigits: 2
-                })
-                document.getElementById("res_item4").innerText = "---"
+            document.getElementById('qtd_Prod3').onclick = function call_calcula3() {
+                calcula3()
             }
 
             // Calculo para 4 itens
