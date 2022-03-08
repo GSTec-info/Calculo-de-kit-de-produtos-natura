@@ -99,7 +99,7 @@
             })
 
             // Calculo para 2 itens
-            document.getElementById('qtd_Prod2').onclick = function calcula2() {
+            function calcula2() {
                 var somaItens = 1 + 2
                 var prcBase = vlrCusto / somaItens
                 var vlrItem1 = prcBase
@@ -117,6 +117,13 @@
                 })
                 document.getElementById("res_item3").innerText = "---"
                 document.getElementById("res_item4").innerText = "---"
+            }
+            if (document.getElementById('qtd_Prod2').checked == true) {
+                calcula2()
+            }
+            document.getElementById('qtd_Prod2').onclick = function call_calcula2() {
+                calcula2()
+
             }
 
             // Calculo para 3 itens
@@ -155,8 +162,7 @@
             }
 
             // Calculo para 4 itens
-            document.getElementById('qtd_Prod4').onclick = function calcula4() {
-
+            function calcula4() {
                 var somaItens = 1 + 2 + 3 + 4
                 var prcBase = vlrCusto / somaItens
                 var vlrItem1 = prcBase
@@ -184,6 +190,12 @@
                     currency: 'BRL',
                     minimumFractionDigits: 2
                 })
+            }
+            if (document.getElementById('qtd_Prod4').checked == true) {
+                calcula4()
+            }
+            document.getElementById('qtd_Prod4').onclick = function call_calcula4() {
+                calcula4()
             }
 
         }
