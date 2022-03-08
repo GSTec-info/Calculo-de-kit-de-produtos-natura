@@ -1,6 +1,6 @@
 :root {
     --fonte-padrao: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
-    --Sombra-padrao: 0px 8px 8px rgba(0, 0, 0, 0.205);
+    --Sombra-padrao: 0px 0px 10px rgba(0, 0, 0, 0.205);
 }
 
 * {
@@ -63,11 +63,15 @@ label {
     align-items: center;
 }
 
+#div_total>label {
+    font-size: 2em;
+}
+
 input {
-    width: 15em;
+    width: 10em;
     padding: 5px;
     text-align: center;
-    font-size: 1.2em;
+    font-size: 1.8em;
     border: none;
     border-radius: 10px;
     box-shadow: var(--Sombra-padrao);
@@ -79,7 +83,7 @@ input {
     align-items: center;
     justify-content: center;
     gap: 15px;
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
     font-size: 1.5em;
 }
 
@@ -90,6 +94,7 @@ input {
     justify-content: center;
     margin-left: 1em;
     margin-right: 1em;
+    margin-top: 0.5em;
 }
 
 .item_qtdProd>input {
@@ -128,6 +133,7 @@ input {
     font-weight: bold;
     border-start-end-radius: 10px;
     border-start-start-radius: 10px;
+    font-size: 1.5em;
 }
 
 .res_item {
@@ -139,7 +145,7 @@ input {
     padding-top: 2em;
     display: flex;
     flex-direction: column;
-    font-size: 1.5em;
+    font-size: 1.3em;
 }
 
 #div_Revend>div {
@@ -149,21 +155,15 @@ input {
     width: 70%;
 }
 
-.titulo_div_Revend {
-    background-color: rgba(0, 11, 160, 0.829);
+#titulo_vlr_custo {
+    background-color: rgb(44, 95, 49);
     padding: 5px 15px 5px 15px;
     text-align: center;
     border-start-end-radius: 10px;
     border-start-start-radius: 10px;
     font-weight: bold;
     color: white;
-}
-
-#res_Revend {
-    background-color: rgba(201, 119, 119, 0.678);
-    border-end-start-radius: 10px;
-    border-end-end-radius: 10px;
-    padding: 5px 15px 5px 15px;
+    font-size: 1.3em;
 }
 
 #res_Custo {
@@ -171,4 +171,24 @@ input {
     border-end-start-radius: 10px;
     border-end-end-radius: 10px;
     padding: 5px 15px 5px 15px;
+    font-size: 1.3em;
+}
+
+#titulo_desc_Revend {
+    background-color: rgb(95, 22, 22);
+    padding: 5px 15px 5px 15px;
+    text-align: center;
+    border-start-end-radius: 10px;
+    border-start-start-radius: 10px;
+    font-weight: bold;
+    color: white;
+    font-size: 1em;
+}
+
+#res_Revend {
+    background-color: rgba(201, 119, 119, 0.678);
+    border-end-start-radius: 10px;
+    border-end-end-radius: 10px;
+    padding: 5px 15px 5px 15px;
+    font-size: 1em;
 }
