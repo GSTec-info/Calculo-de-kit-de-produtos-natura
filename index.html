@@ -7,6 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/index.css">
     <title>Calculo de Kit</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="manifest" href="images/site.webmanifest">
+    <link rel="mask-icon" href="images/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
     <style>
         @media screen and (min-width:300px) and (max-width:600px) {
             main {
@@ -29,7 +37,7 @@
 
 <body>
     <main>
-        <h1>Cálculo do KIT</h1>
+        <h1>Cálculo de KIT</h1>
         <div id="div_calculo">
             <div id="div_total">
                 <label for="total_kit">--- Valor do Kit (R$) ---</label>
@@ -37,9 +45,18 @@
                 <label for="qtd_Prod">Quantidade de Produtos</label>
             </div>
             <div id="div_qtdProd">
-                <input type="radio" value="2" name="qtd_Prod" id="qtd_Prod2">2
-                <input type="radio" value="3" name="qtd_Prod" id="qtd_Prod3" checked>3
-                <input type="radio" value="4" name="qtd_Prod" id="qtd_Prod4">4
+                <div class="item_qtdProd">
+                    <input type="radio" value="2" name="qtd_Prod" id="qtd_Prod2">
+                    <p>2</p>
+                </div>
+                <div class="item_qtdProd">
+                    <input type="radio" value="3" name="qtd_Prod" id="qtd_Prod3" checked>
+                    <p>3</p>
+                </div>
+                <div class="item_qtdProd">
+                    <input type="radio" value="4" name="qtd_Prod" id="qtd_Prod4">
+                    <p>4</p>
+                </div>
             </div>
             <div id="Dados">
                 <div id="div_itens">
