@@ -35,14 +35,14 @@
         <h1>Cálculo do KIT</h1>
         <div id="div_calculo">
             <div id="div_total">
-                <label for="total_kit">--- Valor do Kit ---</label>
+                <label for="total_kit">--- Valor do Kit (R$) ---</label>
                 <input type="number" inputmode="decimal" min="0" step=".01" name="total_kit" id="total_kit" onkeyup="calcula()">
                 <label for="qtd_Prod">Quantidade de Produtos</label>
             </div>
             <div id="div_qtdProd">
-                <input type="radio" value="3" name="qtd_Prod" id="qtd_Prod2">2
-                <input type="radio" value="2" name="qtd_Prod" id="qtd_Prod3">3
-                <input type="radio" value="2" name="qtd_Prod" id="qtd_Prod4">4
+                <input type="radio" value="2" name="qtd_Prod" id="qtd_Prod2">2
+                <input type="radio" value="3" name="qtd_Prod" id="qtd_Prod3" checked>3
+                <input type="radio" value="4" name="qtd_Prod" id="qtd_Prod4">4
             </div>
             <div id="Dados">
                 <div id="div_itens">
@@ -82,6 +82,7 @@
     <!-- Calculos -->
     <script>
         function calcula() {
+            // Calculo geral
             var total = document.getElementById("total_kit").value
             var descVend = total * 0.3
             var vlrCusto = total - descVend
@@ -97,11 +98,12 @@
                 minimumFractionDigits: 2
             })
 
+            // Calculo para 2 itens
             document.getElementById('qtd_Prod2').onclick = function calcula2() {
-                var somaItens2 = 1 + 2
-                var prcBase2 = vlrCusto / somaItens2
-                var vlrItem1 = prcBase2
-                var vlrItem2 = prcBase2 * 2
+                var somaItens = 1 + 2
+                var prcBase = vlrCusto / somaItens
+                var vlrItem1 = prcBase
+                var vlrItem2 = prcBase * 2
 
                 document.getElementById("res_item1").innerText = vlrItem1.toLocaleString('pt-BR', {
                     style: 'currency',
@@ -116,8 +118,10 @@
                 document.getElementById("res_item3").innerText = "---"
                 document.getElementById("res_item4").innerText = "---"
             }
-            document.getElementById('qtd_Prod3').onclick = function calcula3() {
 
+            // Calculo para 3 itens
+
+            if (document.getElementById('qtd_Prod3').checked == true) {
                 var somaItens = 1 + 2 + 3
                 var prcBase = vlrCusto / somaItens
                 var vlrItem1 = prcBase
@@ -141,6 +145,33 @@
                 })
                 document.getElementById("res_item4").innerText = "---"
             }
+
+            document.getElementById('qtd_Prod3').onclick = function calcula3() {
+                var somaItens = 1 + 2 + 3
+                var prcBase = vlrCusto / somaItens
+                var vlrItem1 = prcBase
+                var vlrItem2 = prcBase * 2
+                var vlrItem3 = prcBase * 3
+
+                document.getElementById("res_item1").innerText = vlrItem1.toLocaleString('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL',
+                    minimumFractionDigits: 2
+                })
+                document.getElementById("res_item2").innerText = vlrItem2.toLocaleString('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL',
+                    minimumFractionDigits: 2
+                })
+                document.getElementById("res_item3").innerText = vlrItem3.toLocaleString('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL',
+                    minimumFractionDigits: 2
+                })
+                document.getElementById("res_item4").innerText = "---"
+            }
+
+            // Calculo para 4 itens
             document.getElementById('qtd_Prod4').onclick = function calcula4() {
 
                 var somaItens = 1 + 2 + 3 + 4
