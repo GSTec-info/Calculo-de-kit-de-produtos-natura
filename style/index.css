@@ -21,16 +21,16 @@ main {
     flex-direction: column;
     align-items: center;
     background-color: aliceblue;
-    margin-left: 20vw;
-    margin-right: 20vw;
-    margin-top: 5vh;
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-top: 2em;
     padding: 15px;
     border-radius: 12px;
     gap: 15px;
 }
 
 h1 {
-    font-size: 5em;
+    font-size: 3em;
     text-align: center;
     padding-top: 0.3em;
     color: white;
@@ -163,8 +163,8 @@ input {
 
 .tituloItem,
 .res_item {
-    width: 12em;
-    font-size: 1.5em;
+    width: 7em;
+    font-size: 1.2em;
 }
 
 .res_sug {
@@ -199,7 +199,7 @@ input {
 
 #titulo_vlr_venda {
     background-color: rgba(0, 180, 24, 0.753);
-    font-weight: bold;
+    font-weight: bolder;
     font-size: 1.3em;
     border-start-end-radius: 10px;
     border-start-start-radius: 10px;
