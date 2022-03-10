@@ -43,8 +43,13 @@
             <div id="div_total">
                 <label for="total_kit">----- Valor do Kit (R$) -----</label>
                 <input type="number" inputmode="decimal" min="0" step=".01" name="iTotal_kit" id="total_kit" onkeyup="calcula()">
-                <label>Quantidade de Produtos</label>
+
             </div>
+            <div id="div_porcent">
+                <label>Porcentagem de lucro</label>
+                <input type="number" inputmode="decimal" min="0" id="porcent_itens" onkeyup="calcula()">
+            </div>
+            <label>Quantidade de Produtos</label>
             <div id="div_qtdProd">
                 <div class="item_qtdProd">
                     <input type="radio" value="2" name="qtd_Prod" id="qtd_Prod2">
@@ -59,26 +64,35 @@
                     <label for="qtd_Prod4">4</label>
                 </div>
             </div>
+
             <div id="Dados">
                 <div id="div_itens">
                     <div>
                         <p class="tituloItem">Item 1</p>
                         <p id="res_item1" class="res_item">---</p>
+                        <p id="res_sug1" class="res_sug"><br></p>
                     </div>
                     <div>
                         <p class="tituloItem">Item 2</p>
                         <p id="res_item2" class="res_item">---</p>
+                        <p id="res_sug2" class="res_sug"><br></p>
                     </div>
                     <div id="div_Item3">
                         <p class="tituloItem">Item 3</p>
                         <p id="res_item3" class="res_item">---</p>
+                        <p id="res_sug3" class="res_sug"><br></p>
                     </div>
                     <div id="div_Item4">
                         <p class="tituloItem">Item 4</p>
                         <p id="res_item4" class="res_item">---</p>
+                        <p id="res_sug4" class="res_sug"><br></p>
                     </div>
                 </div>
                 <div id="div_Revend">
+                    <div id="div_vlrVenda">
+                        <p id="titulo_vlr_venda" class="titulo_div_Revend">Valor de Venda</p>
+                        <p id="res_Venda">---</p>
+                    </div>
                     <div>
                         <p id="titulo_vlr_custo" class="titulo_div_Revend">Valor de Custo</p>
                         <p id="res_Custo">---</p>
@@ -100,6 +114,8 @@
             var total = document.getElementById("total_kit").value
             var descVend = total * 0.3
             var vlrCusto = total - descVend
+            var percent_lucro = document.getElementById('porcent_itens').value
+            var vlrVenda = vlrCusto + (vlrCusto * (percent_lucro / 100))
 
             document.getElementById("res_Revend").innerText = descVend.toLocaleString('pt-BR', {
                 style: 'currency',
@@ -111,6 +127,15 @@
                 currency: 'BRL',
                 minimumFractionDigits: 2
             })
+            if (percent_lucro != 0) {
+                document.getElementById('res_Venda').innerText = vlrVenda.toLocaleString('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL',
+                    minimumFractionDigits: 2
+                })
+            } else {
+
+            }
 
             // Calculo para 2 itens
             function calcula2() {
@@ -118,6 +143,9 @@
                 var prcBase = vlrCusto / somaItens
                 var vlrItem1 = prcBase
                 var vlrItem2 = prcBase * 2
+                var prcSug1 = vlrItem1 + (vlrItem1 * (percent_lucro / 100))
+                var prcSug2 = vlrItem2 + (vlrItem2 * (percent_lucro / 100))
+
 
                 document.getElementById("res_item1").innerText = vlrItem1.toLocaleString('pt-BR', {
                     style: 'currency',
@@ -129,15 +157,38 @@
                     currency: 'BRL',
                     minimumFractionDigits: 2
                 })
+
+                //-- Calculo de lucro (itens) --
+                if (percent_lucro != 0) {
+                    document.getElementById('res_sug1').innerText = `+ ${percent_lucro}%\n` + prcSug1.toLocaleString('pt-BR', {
+                        style: 'currency',
+                        currency: 'BRL',
+                        minimumFractionDigits: 2
+                    })
+                    document.getElementById('res_sug2').innerText = `+ ${percent_lucro}%\n` + prcSug2.toLocaleString('pt-BR', {
+                        style: 'currency',
+                        currency: 'BRL',
+                        minimumFractionDigits: 2
+                    })
+
+                    document.getElementById('res_sug3').innerText = "\n"
+                    document.getElementById('res_sug4').innerText = "\n"
+                } else {
+                    document.getElementById('res_sug1').innerText = "\n"
+                    document.getElementById('res_sug2').innerText = "\n"
+                    document.getElementById('res_sug3').innerText = "\n"
+                    document.getElementById('res_sug4').innerText = "\n"
+                }
+                //----------------------------------------
                 document.getElementById("res_item3").innerText = "---"
                 document.getElementById("res_item4").innerText = "---"
+
             }
             if (document.getElementById('qtd_Prod2').checked == true) {
                 calcula2()
             }
             document.getElementById('qtd_Prod2').onclick = function call_calcula2() {
                 calcula2()
-
             }
 
             // Calculo para 3 itens
@@ -147,6 +198,9 @@
                 var vlrItem1 = prcBase
                 var vlrItem2 = prcBase * 2
                 var vlrItem3 = prcBase * 3
+                var prcSug1 = vlrItem1 + (vlrItem1 * (percent_lucro / 100))
+                var prcSug2 = vlrItem2 + (vlrItem2 * (percent_lucro / 100))
+                var prcSug3 = vlrItem3 + (vlrItem3 * (percent_lucro / 100))
 
                 document.getElementById("res_item1").innerText = vlrItem1.toLocaleString('pt-BR', {
                     style: 'currency',
@@ -163,6 +217,33 @@
                     currency: 'BRL',
                     minimumFractionDigits: 2
                 })
+
+                //-- Calculo de lucro (itens) --
+                if (percent_lucro != 0) {
+                    document.getElementById('res_sug1').innerText = `+ ${percent_lucro}%\n` + prcSug1.toLocaleString('pt-BR', {
+                        style: 'currency',
+                        currency: 'BRL',
+                        minimumFractionDigits: 2
+                    })
+                    document.getElementById('res_sug2').innerText = `+ ${percent_lucro}%\n` + prcSug2.toLocaleString('pt-BR', {
+                        style: 'currency',
+                        currency: 'BRL',
+                        minimumFractionDigits: 2
+                    })
+                    document.getElementById('res_sug3').innerText = `+ ${percent_lucro}%\n` + prcSug3.toLocaleString('pt-BR', {
+                        style: 'currency',
+                        currency: 'BRL',
+                        minimumFractionDigits: 2
+                    })
+                    document.getElementById('res_sug4').innerText = "\n\n"
+                } else {
+                    document.getElementById('res_sug1').innerText = "\n"
+                    document.getElementById('res_sug2').innerText = "\n"
+                    document.getElementById('res_sug3').innerText = "\n"
+                    document.getElementById('res_sug4').innerText = "\n"
+
+                }
+                //----------------------------------------
                 document.getElementById("res_item4").innerText = "---"
             }
 
@@ -172,6 +253,7 @@
 
             document.getElementById('qtd_Prod3').onclick = function call_calcula3() {
                 calcula3()
+
             }
 
             // Calculo para 4 itens
@@ -182,6 +264,10 @@
                 var vlrItem2 = prcBase * 2
                 var vlrItem3 = prcBase * 3
                 var vlrItem4 = prcBase * 4
+                var prcSug1 = vlrItem1 + (vlrItem1 * (percent_lucro / 100))
+                var prcSug2 = vlrItem2 + (vlrItem2 * (percent_lucro / 100))
+                var prcSug3 = vlrItem3 + (vlrItem3 * (percent_lucro / 100))
+                var prcSug4 = vlrItem4 + (vlrItem4 * (percent_lucro / 100))
 
                 document.getElementById("res_item1").innerText = vlrItem1.toLocaleString('pt-BR', {
                     style: 'currency',
@@ -203,6 +289,36 @@
                     currency: 'BRL',
                     minimumFractionDigits: 2
                 })
+
+                //-- Calculo de lucro (itens) --
+                if (percent_lucro != 0) {
+                    document.getElementById('res_sug1').innerText = `+ ${percent_lucro}%\n` + prcSug1.toLocaleString('pt-BR', {
+                        style: 'currency',
+                        currency: 'BRL',
+                        minimumFractionDigits: 2
+                    })
+                    document.getElementById('res_sug2').innerText = `+ ${percent_lucro}%\n` + prcSug2.toLocaleString('pt-BR', {
+                        style: 'currency',
+                        currency: 'BRL',
+                        minimumFractionDigits: 2
+                    })
+                    document.getElementById('res_sug3').innerText = `+ ${percent_lucro}%\n` + prcSug3.toLocaleString('pt-BR', {
+                        style: 'currency',
+                        currency: 'BRL',
+                        minimumFractionDigits: 2
+                    })
+                    document.getElementById('res_sug4').innerText = `+ ${percent_lucro}%\n` + prcSug4.toLocaleString('pt-BR', {
+                        style: 'currency',
+                        currency: 'BRL',
+                        minimumFractionDigits: 2
+                    })
+                } else {
+                    document.getElementById('res_sug1').innerText = "\n"
+                    document.getElementById('res_sug2').innerText = "\n"
+                    document.getElementById('res_sug3').innerText = "\n"
+                    document.getElementById('res_sug4').innerText = "\n"
+                }
+                //----------------------------------------
             }
             if (document.getElementById('qtd_Prod4').checked == true) {
                 calcula4()

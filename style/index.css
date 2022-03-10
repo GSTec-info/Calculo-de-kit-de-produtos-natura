@@ -34,8 +34,15 @@ h1 {
     text-align: center;
 }
 
+#div_calculo>label {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.3em;
+}
+
 label {
-    padding-bottom: 0.8em;
+    padding-bottom: 0.3em;
     font-size: 1.5em;
 }
 
@@ -109,6 +116,18 @@ input {
     font-size: 0.8em;
 }
 
+#div_porcent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#div_porcent>label {
+    font-size: 1.3em;
+}
+
 #Dados>div {
     display: flex;
     align-items: center;
@@ -119,6 +138,10 @@ input {
     background-color: rgba(0, 11, 160, 0.829);
     padding: 5px;
     color: white;
+    font-weight: bold;
+    border-start-end-radius: 10px;
+    border-start-start-radius: 10px;
+    font-size: 1.5em;
 }
 
 .res_item {
@@ -133,16 +156,13 @@ input {
     font-size: 1.5em;
 }
 
-.tituloItem {
+.res_sug {
+    text-align: center;
+    color: white;
     font-weight: bold;
-    border-start-end-radius: 10px;
-    border-start-start-radius: 10px;
-    font-size: 1.5em;
-}
-
-.res_item {
-    border-end-start-radius: 10px;
-    border-end-end-radius: 10px;
+    background-color: rgb(161, 49, 49);
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 
 #div_Revend {
