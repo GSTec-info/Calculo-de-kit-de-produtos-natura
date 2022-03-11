@@ -6,7 +6,7 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: content-box;
     text-decoration: none;
 }
 
@@ -23,10 +23,8 @@ main {
     background-color: aliceblue;
     margin-left: 1em;
     margin-right: 1em;
-    margin-top: 2em;
-    padding: 15px;
-    border-radius: 12px;
-    gap: 15px;
+    margin-top: 1em;
+    border-radius: 10px;
 }
 
 h1 {
@@ -45,33 +43,11 @@ h1 {
     font-size: 1.3em;
 }
 
-label {
-    padding-bottom: 0.3em;
-    font-size: 1.5em;
-}
-
-#Dados {
-    padding-top: 1em;
-    display: flex;
-    flex-direction: column;
-}
-
-#div_itens {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-}
-
-#div_itens>div {
-    border-radius: 20px;
-}
-
 #div_total {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 1em;
 }
 
 #div_total>label {
@@ -132,9 +108,28 @@ input {
     font-size: 1.3em;
 }
 
+label {
+    padding-bottom: 0.3em;
+    font-size: 1.5em;
+}
+
+#Dados {
+    display: flex;
+    flex-direction: column;
+}
+
 #Dados>div {
     display: flex;
     align-items: center;
+}
+
+#div_itens {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 20px;
 }
 
 #div_itens>div {
