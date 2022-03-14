@@ -63,6 +63,7 @@ input {
     border-radius: 10px;
     box-shadow: var(--Sombra-padrao);
     margin-bottom: 1em;
+    background-color: white;
 }
 
 #div_qtdProd {
@@ -146,6 +147,9 @@ label {
     border-start-end-radius: 10px;
     border-start-start-radius: 10px;
     font-size: 1.5em;
+    border-top: 2px solid rgba(0, 0, 0, 0.575);
+    border-left: 2px solid rgba(0, 0, 0, 0.575);
+    border-right: 2px solid rgba(0, 0, 0, 0.575);
 }
 
 .res_item {
@@ -154,6 +158,9 @@ label {
     text-align: center;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
+    border-left: 2px solid rgba(0, 0, 0, 0.575);
+    border-right: 2px solid rgba(0, 0, 0, 0.575);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.575);
 }
 
 .tituloItem,
@@ -170,6 +177,9 @@ label {
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
     padding: 5px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.575);
+    border-left: 2px solid rgba(0, 0, 0, 0.575);
+    border-right: 2px solid rgba(0, 0, 0, 0.575);
 }
 
 #div_Revend {
@@ -190,6 +200,12 @@ label {
 #div_vlrVenda {
     border-radius: 10px;
     box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.295);
+}
+
+#div_vlrVenda>div {
+    background-color: white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 #titulo_vlr_venda {

@@ -47,7 +47,7 @@
         <div id="div_calculo">
             <div id="div_total">
                 <label for="total_kit">----- Valor do Kit (R$) -----</label>
-                <input type="number" inputmode="decimal" min="0" step=".01" name="iTotal_kit" id="total_kit" onkeyup="calcula()" autofocus>
+                <input type="number" class="campo_total_kit" inputmode="decimal" min="0" step=".01" name="iTotal_kit" id="total_kit" onkeyup="calcula()">
 
             </div>
             <div id="div_porcent">
@@ -97,7 +97,7 @@
                     <div id="div_vlrVenda" style="width: 90%;">
                         <p id="titulo_vlr_venda" class="titulo_div_Revend">Preço Final</p>
                         <div style="display: flex; align-items: center;">
-                            <img src="images/emoji_money.png" style="/*margin-right: 10px;*/ width: 50px; height: 50px; margin-left: 1em;">
+                            <img src="images/emoji_money.png" style="margin: 3px 3px 5px 1em; width: 60px; height: 60px; ">
                             <div style=" width: 100%; padding-right: 3.5em;">
                                 <p id="res_Venda">---</p>
                                 <p id="res_Ganho"></p>
@@ -120,7 +120,6 @@
 
     <!-- Calculos -->
     <script>
-        document.getElementById("div_vlrVenda").style.display = "none"
         document.getElementById("res_sug1").style.display = "none"
         document.getElementById("res_sug2").style.display = "none"
         document.getElementById("res_sug3").style.display = "none"
@@ -146,19 +145,19 @@
                 currency: 'BRL',
                 minimumFractionDigits: 2
             })
+            document.getElementById('res_Venda').innerText = vlrVenda.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL',
+                minimumFractionDigits: 2
+            })
             if (percent_lucro != 0) {
-                document.getElementById('res_Venda').innerText = vlrVenda.toLocaleString('pt-BR', {
-                    style: 'currency',
-                    currency: 'BRL',
-                    minimumFractionDigits: 2
-                })
+
                 document.getElementById('res_Ganho').innerText = "Ganho de: " + vlrGanho.toLocaleString('pt-BR', {
                     style: 'currency',
                     currency: 'BRL',
                     minimumFractionDigits: 2
                 })
             } else {
-                document.getElementById('res_Venda').innerText = ""
                 document.getElementById('res_Ganho').innerText = ""
             }
 
@@ -209,7 +208,7 @@
                     document.getElementById("res_sug4").style.display = "none"
                     document.getElementById('res_sug3').innerText = ""
                     document.getElementById('res_sug4').innerText = ""
-                    document.getElementById("div_vlrVenda").style.display = "block"
+
                 } else {
                     document.getElementById("res_item1").style.borderBottomLeftRadius = "10px";
                     document.getElementById("res_item1").style.borderBottomRightRadius = "10px";
@@ -227,8 +226,8 @@
                     document.getElementById('res_sug2').innerText = ""
                     document.getElementById('res_sug3').innerText = ""
                     document.getElementById('res_sug4').innerText = ""
-                    document.getElementById("res_Venda").innerText = "---"
-                    document.getElementById("div_vlrVenda").style.display = "none"
+                    document.getElementById('res_Ganho').innerText = ""
+
 
                 }
                 //----------------------------------------
@@ -300,7 +299,7 @@
                     document.getElementById("res_sug3").style.display = "block"
                     document.getElementById("res_sug4").style.display = "none"
                     document.getElementById('res_sug4').innerText = ""
-                    document.getElementById("div_vlrVenda").style.display = "block"
+
                 } else {
                     document.getElementById("res_item1").style.borderBottomLeftRadius = "10px";
                     document.getElementById("res_item1").style.borderBottomRightRadius = "10px";
@@ -318,11 +317,13 @@
                     document.getElementById('res_sug2').innerText = ""
                     document.getElementById('res_sug3').innerText = ""
                     document.getElementById('res_sug4').innerText = ""
-                    document.getElementById("res_Venda").innerText = "---"
-                    document.getElementById("div_vlrVenda").style.display = "none"
+                    document.getElementById('res_Ganho').innerText = ""
+
 
                 }
+
                 //----------------------------------------
+
                 document.getElementById("res_item4").innerText = "---"
             }
 
@@ -403,7 +404,7 @@
                     document.getElementById("res_sug2").style.display = "block"
                     document.getElementById("res_sug3").style.display = "block"
                     document.getElementById("res_sug4").style.display = "block"
-                    document.getElementById("div_vlrVenda").style.display = "block"
+
                 } else {
                     document.getElementById("res_item1").style.borderBottomLeftRadius = "10px";
                     document.getElementById("res_item1").style.borderBottomRightRadius = "10px";
@@ -422,7 +423,7 @@
                     document.getElementById('res_sug3').innerText = ""
                     document.getElementById('res_sug4').innerText = ""
                     document.getElementById("res_Venda").innerText = "---"
-                    document.getElementById("div_vlrVenda").style.display = "none"
+                    document.getElementById('res_Ganho').innerText = ""
                 }
                 //----------------------------------------
             }
