@@ -97,10 +97,10 @@
                     <div id="div_vlrVenda" style="width: 90%;">
                         <p id="titulo_vlr_venda" class="titulo_div_Revend">Preço Final</p>
                         <div style="display: flex; align-items: center;">
-                            <img src="images/emoji_money.png" style="margin: 3px 3px 5px 1em; width: 60px; height: 60px; ">
+                            <img src="images/emoji_money.png" style="margin: 0.8em 3px 0.8em 1em; width: 60px; height: 60px; ">
                             <div style=" width: 100%; padding-right: 3.5em;">
                                 <p id="res_Venda">---</p>
-                                <p id="res_Ganho"></p>
+                                <p id="res_Ganho">Ganho de: ---</p>
                             </div>
                         </div>
                     </div>
@@ -151,14 +151,13 @@
                 minimumFractionDigits: 2
             })
             if (percent_lucro != 0) {
-
                 document.getElementById('res_Ganho').innerText = "Ganho de: " + vlrGanho.toLocaleString('pt-BR', {
                     style: 'currency',
                     currency: 'BRL',
                     minimumFractionDigits: 2
                 })
             } else {
-                document.getElementById('res_Ganho').innerText = ""
+                document.getElementById('res_Ganho').innerText = "Ganho de: ---"
             }
 
             // Calculo para 2 itens
@@ -226,7 +225,7 @@
                     document.getElementById('res_sug2').innerText = ""
                     document.getElementById('res_sug3').innerText = ""
                     document.getElementById('res_sug4').innerText = ""
-                    document.getElementById('res_Ganho').innerText = ""
+                    document.getElementById('res_Ganho').innerText = "Ganho de: ---"
 
 
                 }
@@ -317,7 +316,7 @@
                     document.getElementById('res_sug2').innerText = ""
                     document.getElementById('res_sug3').innerText = ""
                     document.getElementById('res_sug4').innerText = ""
-                    document.getElementById('res_Ganho').innerText = ""
+                    document.getElementById('res_Ganho').innerText = "Ganho de: ---"
 
 
                 }
@@ -422,8 +421,7 @@
                     document.getElementById('res_sug2').innerText = ""
                     document.getElementById('res_sug3').innerText = ""
                     document.getElementById('res_sug4').innerText = ""
-                    document.getElementById("res_Venda").innerText = "---"
-                    document.getElementById('res_Ganho').innerText = ""
+                    document.getElementById('res_Ganho').innerText = "Ganho de: ---"
                 }
                 //----------------------------------------
             }
