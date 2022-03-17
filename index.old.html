@@ -15,6 +15,7 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <script src="sweetalert.js"></script>
     <style>
         @media screen and (min-width:400px) and (max-width:800px) {
             #div_itens {
@@ -26,7 +27,6 @@
             main {
                 margin-left: 30vw;
                 margin-right: 30vw;
-                margin-top: 2em;
             }
             h1 {
                 font-size: 3em;
@@ -36,14 +36,19 @@
                 width: 7em;
                 font-size: 1.2em;
             }
+            #div_botao {
+                margin-left: 30vw;
+            }
         }
     </style>
 </head>
 
 <body>
     <h1>Cálculo de KIT</h1>
+    <div id="div_botao">
+        <button onclick="info()" class="botao">Informações</button>
+    </div>
     <main>
-
         <div id="div_calculo">
             <div id="div_total">
                 <label for="total_kit">----- Valor do Kit (R$) -----</label>
@@ -112,6 +117,7 @@
                         <p id="titulo_desc_Revend" class="titulo_div_Revend">Desconto da Revendedora</p>
                         <p id="res_Revend">---</p>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -125,6 +131,13 @@
         document.getElementById("res_sug3").style.display = "none"
         document.getElementById("res_sug4").style.display = "none"
 
+        function info() {
+            swal({
+                title: "O lucro de cada item e do preço final é calculado em cima do valor total do kit.",
+                text: "",
+                icon: "info",
+            });
+        }
 
         function calcula() {
             // Calculo geral
@@ -132,7 +145,7 @@
             var descVend = total * 0.3
             var vlrCusto = total - descVend
             var percent_lucro = document.getElementById('porcent_itens').value
-            var vlrVenda = vlrCusto / ((100 - percent_lucro) / 100)
+            var vlrVenda = vlrCusto + (total * (percent_lucro / 100))
             var vlrGanho = vlrVenda - vlrCusto
 
             document.getElementById("res_Revend").innerText = descVend.toLocaleString('pt-BR', {
@@ -166,8 +179,8 @@
                 var prcBase = vlrCusto / somaItens
                 var vlrItem1 = prcBase
                 var vlrItem2 = prcBase * 2
-                var prcSug1 = vlrItem1 / ((100 - percent_lucro) / 100)
-                var prcSug2 = vlrItem2 / ((100 - percent_lucro) / 100)
+                var prcSug1 = vlrItem1 + (total * (percent_lucro / 100))
+                var prcSug2 = vlrItem2 + (total * (percent_lucro / 100))
 
 
                 document.getElementById("res_item1").innerText = vlrItem1.toLocaleString('pt-BR', {
@@ -248,9 +261,9 @@
                 var vlrItem1 = prcBase
                 var vlrItem2 = prcBase * 2
                 var vlrItem3 = prcBase * 3
-                var prcSug1 = vlrItem1 + (vlrItem1 * (percent_lucro / 100))
-                var prcSug2 = vlrItem2 + (vlrItem2 * (percent_lucro / 100))
-                var prcSug3 = vlrItem3 + (vlrItem3 * (percent_lucro / 100))
+                var prcSug1 = vlrItem1 + (total * (percent_lucro / 100))
+                var prcSug2 = vlrItem2 + (total * (percent_lucro / 100))
+                var prcSug3 = vlrItem3 + (total * (percent_lucro / 100))
 
                 document.getElementById("res_item1").innerText = vlrItem1.toLocaleString('pt-BR', {
                     style: 'currency',
@@ -343,10 +356,10 @@
                 var vlrItem2 = prcBase * 2
                 var vlrItem3 = prcBase * 3
                 var vlrItem4 = prcBase * 4
-                var prcSug1 = vlrItem1 + (vlrItem1 * (percent_lucro / 100))
-                var prcSug2 = vlrItem2 + (vlrItem2 * (percent_lucro / 100))
-                var prcSug3 = vlrItem3 + (vlrItem3 * (percent_lucro / 100))
-                var prcSug4 = vlrItem4 + (vlrItem4 * (percent_lucro / 100))
+                var prcSug1 = vlrItem1 + (total * (percent_lucro / 100))
+                var prcSug2 = vlrItem2 + (total * (percent_lucro / 100))
+                var prcSug3 = vlrItem3 + (total * (percent_lucro / 100))
+                var prcSug4 = vlrItem4 + (total * (percent_lucro / 100))
 
                 document.getElementById("res_item1").innerText = vlrItem1.toLocaleString('pt-BR', {
                     style: 'currency',

@@ -15,6 +15,7 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <script src="sweetalert.js"></script>
     <style>
         @media screen and (min-width:400px) and (max-width:800px) {
             #div_itens {
@@ -26,7 +27,6 @@
             main {
                 margin-left: 30vw;
                 margin-right: 30vw;
-                margin-top: 2em;
             }
             h1 {
                 font-size: 3em;
@@ -36,14 +36,19 @@
                 width: 7em;
                 font-size: 1.2em;
             }
+            #div_botao {
+                margin-left: 30vw;
+            }
         }
     </style>
 </head>
 
 <body>
     <h1>Cálculo de KIT</h1>
+    <div id="div_botao">
+        <button onclick="info()" class="botao">Informações</button>
+    </div>
     <main>
-
         <div id="div_calculo">
             <div id="div_total">
                 <label for="total_kit">----- Valor do Kit (R$) -----</label>
@@ -115,7 +120,6 @@
                 </div>
             </div>
         </div>
-
     </main>
 
     <!-- Calculos -->
@@ -125,6 +129,13 @@
         document.getElementById("res_sug3").style.display = "none"
         document.getElementById("res_sug4").style.display = "none"
 
+        function info() {
+            swal({
+                title: "O lucro de cada item e do preço final é calculado em cima do valor de custo.",
+                text: "",
+                icon: "info",
+            });
+        }
 
         function calcula() {
             // Calculo geral
