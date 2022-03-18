@@ -139,12 +139,12 @@
 
         function calcula() {
             // Calculo geral
-            var total = document.getElementById("total_kit").value
-            var descVend = total * 0.3
-            var vlrCusto = total - descVend
-            var percent_lucro = document.getElementById('porcent_itens').value
-            var vlrVenda = vlrCusto + (vlrCusto * (percent_lucro / 100))
-            var vlrGanho = vlrVenda - vlrCusto
+            const total = document.getElementById("total_kit").value
+            const descVend = total * 0.3
+            const vlrCusto = total - descVend
+            const percent_lucro = document.getElementById('porcent_itens').value
+            const vlrVenda = vlrCusto + (vlrCusto * (percent_lucro / 100))
+            const vlrGanho = vlrVenda - vlrCusto
 
             document.getElementById("res_Revend").innerText = descVend.toLocaleString('pt-BR', {
                 style: 'currency',
@@ -173,12 +173,12 @@
 
             // Calculo para 2 itens
             function calcula2() {
-                var somaItens = 1 + 2
-                var prcBase = vlrCusto / somaItens
-                var vlrItem1 = prcBase
-                var vlrItem2 = prcBase * 2
-                var prcSug1 = vlrItem1 + (vlrItem1 * (percent_lucro / 100))
-                var prcSug2 = vlrItem2 + (vlrItem2 * (percent_lucro / 100))
+                const somaItens = 1 + 2
+                const prcBase = vlrCusto / somaItens
+                const vlrItem1 = prcBase
+                const vlrItem2 = prcBase * 2
+                const prcSug1 = vlrItem1 + (vlrItem1 * (percent_lucro / 100))
+                const prcSug2 = vlrItem2 + (vlrItem2 * (percent_lucro / 100))
 
 
                 document.getElementById("res_item1").innerText = vlrItem1.toLocaleString('pt-BR', {
@@ -254,14 +254,14 @@
 
             // Calculo para 3 itens
             function calcula3() {
-                var somaItens = 1 + 2 + 3
-                var prcBase = vlrCusto / somaItens
-                var vlrItem1 = prcBase
-                var vlrItem2 = prcBase * 2
-                var vlrItem3 = prcBase * 3
-                var prcSug1 = vlrItem1 + (vlrItem1 * (percent_lucro / 100))
-                var prcSug2 = vlrItem2 + (vlrItem2 * (percent_lucro / 100))
-                var prcSug3 = vlrItem3 + (vlrItem3 * (percent_lucro / 100))
+                const somaItens = 1 + 2 + 3
+                const prcBase = vlrCusto / somaItens
+                const vlrItem1 = prcBase
+                const vlrItem2 = prcBase * 2
+                const vlrItem3 = prcBase * 3
+                const prcSug1 = vlrItem1 + (vlrItem1 * (percent_lucro / 100))
+                const prcSug2 = vlrItem2 + (vlrItem2 * (percent_lucro / 100))
+                const prcSug3 = vlrItem3 + (vlrItem3 * (percent_lucro / 100))
 
                 document.getElementById("res_item1").innerText = vlrItem1.toLocaleString('pt-BR', {
                     style: 'currency',
@@ -343,21 +343,20 @@
 
             document.getElementById('qtd_Prod3').onclick = function call_calcula3() {
                 calcula3()
-
             }
 
             // Calculo para 4 itens
             function calcula4() {
-                var somaItens = 1 + 2 + 3 + 4
-                var prcBase = vlrCusto / somaItens
-                var vlrItem1 = prcBase
-                var vlrItem2 = prcBase * 2
-                var vlrItem3 = prcBase * 3
-                var vlrItem4 = prcBase * 4
-                var prcSug1 = vlrItem1 + (vlrItem1 * (percent_lucro / 100))
-                var prcSug2 = vlrItem2 + (vlrItem2 * (percent_lucro / 100))
-                var prcSug3 = vlrItem3 + (vlrItem3 * (percent_lucro / 100))
-                var prcSug4 = vlrItem4 + (vlrItem4 * (percent_lucro / 100))
+                const somaItens = 1 + 2 + 3 + 4
+                const prcBase = vlrCusto / somaItens
+                const vlrItem1 = prcBase
+                const vlrItem2 = prcBase * 2
+                const vlrItem3 = prcBase * 3
+                const vlrItem4 = prcBase * 4
+                const prcSug1 = vlrItem1 + (vlrItem1 * (percent_lucro / 100))
+                const prcSug2 = vlrItem2 + (vlrItem2 * (percent_lucro / 100))
+                const prcSug3 = vlrItem3 + (vlrItem3 * (percent_lucro / 100))
+                const prcSug4 = vlrItem4 + (vlrItem4 * (percent_lucro / 100))
 
                 document.getElementById("res_item1").innerText = vlrItem1.toLocaleString('pt-BR', {
                     style: 'currency',
