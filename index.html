@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style/index.css">
     <title>Calculo de Kit</title>
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="32qtd32" href="images/favicon-32qtd32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
     <link rel="manifest" href="images/site.webmanifest">
     <link rel="mask-icon" href="images/safari-pinned-tab.svg" color="#5bbad5">
@@ -124,17 +124,45 @@
 
     <!-- Calculos -->
     <script>
-        document.getElementById("res_sug1").style.display = "none"
-        document.getElementById("res_sug2").style.display = "none"
-        document.getElementById("res_sug3").style.display = "none"
-        document.getElementById("res_sug4").style.display = "none"
+        const quantidadeProd = {
+            qtd2: document.getElementById('qtd_Prod2'),
+            qtd3: document.getElementById('qtd_Prod3'),
+            qtd4: document.getElementById('qtd_Prod4')
+        }
+
+        const vlrItens = {
+            vlr1: document.getElementById("res_item1"),
+            vlr2: document.getElementById("res_item2"),
+            vlr3: document.getElementById("res_item3"),
+            vlr4: document.getElementById("res_item4")
+        }
+
+        const valorSugerido = {
+            vlr1: document.getElementById("res_sug1"),
+            vlr2: document.getElementById("res_sug2"),
+            vlr3: document.getElementById("res_sug3"),
+            vlr4: document.getElementById("res_sug4")
+        }
+
+        const resultCalculo = {
+            descontoRevend: document.getElementById("res_Revend"),
+            vlrCusto: document.getElementById("res_Custo"),
+            vlrVenda: document.getElementById('res_Venda'),
+            vlrGanho: document.getElementById('res_Ganho')
+        }
+
+        valorSugerido.vlr1.style.display = "none"
+        valorSugerido.vlr2.style.display = "none"
+        valorSugerido.vlr3.style.display = "none"
+        valorSugerido.vlr4.style.display = "none"
+
 
         function info() {
             swal({
-                title: "O lucro de cada item e do preço final é calculado em cima do valor de custo.",
-                text: "",
-                icon: "info",
-            });
+                title: "Informações",
+                text: "O lucro de cada item e do preço final\né calculado em cima do valor de custo.",
+                icon: "info"
+            })
         }
 
         function calcula() {
@@ -146,29 +174,29 @@
             const vlrVenda = vlrCusto + (vlrCusto * (percent_lucro / 100))
             const vlrGanho = vlrVenda - vlrCusto
 
-            document.getElementById("res_Revend").innerText = descVend.toLocaleString('pt-BR', {
+            resultCalculo.descontoRevend.innerText = descVend.toLocaleString('pt-BR', {
                 style: 'currency',
                 currency: 'BRL',
                 minimumFractionDigits: 2
             })
-            document.getElementById("res_Custo").innerText = vlrCusto.toLocaleString('pt-BR', {
+            resultCalculo.vlrCusto.innerText = vlrCusto.toLocaleString('pt-BR', {
                 style: 'currency',
                 currency: 'BRL',
                 minimumFractionDigits: 2
             })
-            document.getElementById('res_Venda').innerText = vlrVenda.toLocaleString('pt-BR', {
+            resultCalculo.vlrVenda.innerText = vlrVenda.toLocaleString('pt-BR', {
                 style: 'currency',
                 currency: 'BRL',
                 minimumFractionDigits: 2
             })
             if (percent_lucro != 0) {
-                document.getElementById('res_Ganho').innerText = "Ganho de: " + vlrGanho.toLocaleString('pt-BR', {
+                resultCalculo.vlrGanho.innerText = "Ganho de: " + vlrGanho.toLocaleString('pt-BR', {
                     style: 'currency',
                     currency: 'BRL',
                     minimumFractionDigits: 2
                 })
             } else {
-                document.getElementById('res_Ganho').innerText = "Ganho de: ---"
+                resultCalculo.vlrGanho.innerText = "Ganho de: ---"
             }
 
             // Calculo para 2 itens
@@ -181,12 +209,12 @@
                 const prcSug2 = vlrItem2 + (vlrItem2 * (percent_lucro / 100))
 
 
-                document.getElementById("res_item1").innerText = vlrItem1.toLocaleString('pt-BR', {
+                vlrItens.vlr1.innerText = vlrItem1.toLocaleString('pt-BR', {
                     style: 'currency',
                     currency: 'BRL',
                     minimumFractionDigits: 2
                 })
-                document.getElementById("res_item2").innerText = vlrItem2.toLocaleString('pt-BR', {
+                vlrItens.vlr2.innerText = vlrItem2.toLocaleString('pt-BR', {
                     style: 'currency',
                     currency: 'BRL',
                     minimumFractionDigits: 2
@@ -194,61 +222,62 @@
 
                 //-- Calculo de lucro (itens) --
                 if (percent_lucro != 0) {
-                    document.getElementById('res_sug1').innerText = `+ ${percent_lucro}% de lucro\n` + prcSug1.toLocaleString('pt-BR', {
+                    valorSugerido.vlr1.innerText = `+ ${percent_lucro}% de lucro\n` + prcSug1.toLocaleString('pt-BR', {
                         style: 'currency',
                         currency: 'BRL',
                         minimumFractionDigits: 2
                     })
-                    document.getElementById('res_sug2').innerText = `+ ${percent_lucro}% de lucro\n` + prcSug2.toLocaleString('pt-BR', {
+                    valorSugerido.vlr2.innerText = `+ ${percent_lucro}% de lucro\n` + prcSug2.toLocaleString('pt-BR', {
                         style: 'currency',
                         currency: 'BRL',
                         minimumFractionDigits: 2
                     })
-                    document.getElementById("res_item1").style.borderBottomLeftRadius = "0px";
-                    document.getElementById("res_item1").style.borderBottomRightRadius = "0px";
-                    document.getElementById("res_item2").style.borderBottomLeftRadius = "0px";
-                    document.getElementById("res_item2").style.borderBottomRightRadius = "0px";
-                    document.getElementById("res_item3").style.borderBottomLeftRadius = "10px";
-                    document.getElementById("res_item3").style.borderBottomRightRadius = "10px";
-                    document.getElementById("res_item4").style.borderBottomLeftRadius = "10px";
-                    document.getElementById("res_item4").style.borderBottomRightRadius = "10px";
-                    document.getElementById("res_sug1").style.display = "block"
-                    document.getElementById("res_sug2").style.display = "block"
-                    document.getElementById("res_sug3").style.display = "none"
-                    document.getElementById("res_sug4").style.display = "none"
-                    document.getElementById('res_sug3').innerText = ""
-                    document.getElementById('res_sug4').innerText = ""
+
+                    vlrItens.vlr1.style.borderBottomLeftRadius = "0px";
+                    vlrItens.vlr1.style.borderBottomRightRadius = "0px";
+                    vlrItens.vlr2.style.borderBottomLeftRadius = "0px";
+                    vlrItens.vlr2.style.borderBottomRightRadius = "0px";
+                    vlrItens.vlr3.style.borderBottomLeftRadius = "10px";
+                    vlrItens.vlr3.style.borderBottomRightRadius = "10px";
+                    vlrItens.vlr4.style.borderBottomLeftRadius = "10px";
+                    vlrItens.vlr4.style.borderBottomRightRadius = "10px";
+                    valorSugerido.vlr1.style.display = "block"
+                    valorSugerido.vlr2.style.display = "block"
+                    valorSugerido.vlr3.style.display = "none"
+                    valorSugerido.vlr4.style.display = "none"
+                    valorSugerido.vlr3.innerText = ""
+                    valorSugerido.vlr4.innerText = ""
 
                 } else {
-                    document.getElementById("res_item1").style.borderBottomLeftRadius = "10px";
-                    document.getElementById("res_item1").style.borderBottomRightRadius = "10px";
-                    document.getElementById("res_item2").style.borderBottomLeftRadius = "10px";
-                    document.getElementById("res_item2").style.borderBottomRightRadius = "10px";
-                    document.getElementById("res_item3").style.borderBottomLeftRadius = "10px";
-                    document.getElementById("res_item3").style.borderBottomRightRadius = "10px";
-                    document.getElementById("res_item4").style.borderBottomLeftRadius = "10px";
-                    document.getElementById("res_item4").style.borderBottomRightRadius = "10px";
-                    document.getElementById("res_sug1").style.display = "none"
-                    document.getElementById("res_sug2").style.display = "none"
-                    document.getElementById("res_sug3").style.display = "none"
-                    document.getElementById("res_sug4").style.display = "none"
-                    document.getElementById('res_sug1').innerText = ""
-                    document.getElementById('res_sug2').innerText = ""
-                    document.getElementById('res_sug3').innerText = ""
-                    document.getElementById('res_sug4').innerText = ""
-                    document.getElementById('res_Ganho').innerText = "Ganho de: ---"
+                    vlrItens.vlr1.style.borderBottomLeftRadius = "10px";
+                    vlrItens.vlr1.style.borderBottomRightRadius = "10px";
+                    vlrItens.vlr2.style.borderBottomLeftRadius = "10px";
+                    vlrItens.vlr2.style.borderBottomRightRadius = "10px";
+                    vlrItens.vlr3.style.borderBottomLeftRadius = "10px";
+                    vlrItens.vlr3.style.borderBottomRightRadius = "10px";
+                    vlrItens.vlr4.style.borderBottomLeftRadius = "10px";
+                    vlrItens.vlr4.style.borderBottomRightRadius = "10px";
+                    valorSugerido.vlr1.style.display = "none"
+                    valorSugerido.vlr2.style.display = "none"
+                    valorSugerido.vlr3.style.display = "none"
+                    valorSugerido.vlr4.style.display = "none"
+                    valorSugerido.vlr1.innerText = ""
+                    valorSugerido.vlr2.innerText = ""
+                    valorSugerido.vlr3.innerText = ""
+                    valorSugerido.vlr4.innerText = ""
+                    resultCalculo.vlrGanho.innerText = "Ganho de: ---"
 
 
                 }
                 //----------------------------------------
-                document.getElementById("res_item3").innerText = "---"
-                document.getElementById("res_item4").innerText = "---"
+                vlrItens.vlr3.innerText = "---"
+                vlrItens.vlr4.innerText = "---"
 
             }
-            if (document.getElementById('qtd_Prod2').checked == true) {
+            if (quantidadeProd.qtd2.checked == true) {
                 calcula2()
             }
-            document.getElementById('qtd_Prod2').onclick = function call_calcula2() {
+            quantidadeProd.qtd2.onclick = function call_calcula2() {
                 calcula2()
             }
 
@@ -263,17 +292,17 @@
                 const prcSug2 = vlrItem2 + (vlrItem2 * (percent_lucro / 100))
                 const prcSug3 = vlrItem3 + (vlrItem3 * (percent_lucro / 100))
 
-                document.getElementById("res_item1").innerText = vlrItem1.toLocaleString('pt-BR', {
+                vlrItens.vlr1.innerText = vlrItem1.toLocaleString('pt-BR', {
                     style: 'currency',
                     currency: 'BRL',
                     minimumFractionDigits: 2
                 })
-                document.getElementById("res_item2").innerText = vlrItem2.toLocaleString('pt-BR', {
+                vlrItens.vlr2.innerText = vlrItem2.toLocaleString('pt-BR', {
                     style: 'currency',
                     currency: 'BRL',
                     minimumFractionDigits: 2
                 })
-                document.getElementById("res_item3").innerText = vlrItem3.toLocaleString('pt-BR', {
+                vlrItens.vlr3.innerText = vlrItem3.toLocaleString('pt-BR', {
                     style: 'currency',
                     currency: 'BRL',
                     minimumFractionDigits: 2
@@ -281,67 +310,67 @@
 
                 //-- Calculo de lucro (itens) --
                 if (percent_lucro != 0) {
-                    document.getElementById('res_sug1').innerText = `+ ${percent_lucro}% de lucro\n` + prcSug1.toLocaleString('pt-BR', {
+                    valorSugerido.vlr1.innerText = `+ ${percent_lucro}% de lucro\n` + prcSug1.toLocaleString('pt-BR', {
                         style: 'currency',
                         currency: 'BRL',
                         minimumFractionDigits: 2
                     })
-                    document.getElementById('res_sug2').innerText = `+ ${percent_lucro}% de lucro\n` + prcSug2.toLocaleString('pt-BR', {
+                    valorSugerido.vlr2.innerText = `+ ${percent_lucro}% de lucro\n` + prcSug2.toLocaleString('pt-BR', {
                         style: 'currency',
                         currency: 'BRL',
                         minimumFractionDigits: 2
                     })
-                    document.getElementById('res_sug3').innerText = `+ ${percent_lucro}% de lucro\n` + prcSug3.toLocaleString('pt-BR', {
+                    valorSugerido.vlr3.innerText = `+ ${percent_lucro}% de lucro\n` + prcSug3.toLocaleString('pt-BR', {
                         style: 'currency',
                         currency: 'BRL',
                         minimumFractionDigits: 2
                     })
-                    document.getElementById("res_item1").style.borderBottomLeftRadius = "0px";
-                    document.getElementById("res_item1").style.borderBottomRightRadius = "0px";
-                    document.getElementById("res_item2").style.borderBottomLeftRadius = "0px";
-                    document.getElementById("res_item2").style.borderBottomRightRadius = "0px";
-                    document.getElementById("res_item3").style.borderBottomLeftRadius = "0px";
-                    document.getElementById("res_item3").style.borderBottomRightRadius = "0px";
-                    document.getElementById("res_item4").style.borderBottomLeftRadius = "10px";
-                    document.getElementById("res_item4").style.borderBottomRightRadius = "10px";
-                    document.getElementById("res_sug1").style.display = "block"
-                    document.getElementById("res_sug2").style.display = "block"
-                    document.getElementById("res_sug3").style.display = "block"
-                    document.getElementById("res_sug4").style.display = "none"
-                    document.getElementById('res_sug4').innerText = ""
+                    vlrItens.vlr1.style.borderBottomLeftRadius = "0px";
+                    vlrItens.vlr1.style.borderBottomRightRadius = "0px";
+                    vlrItens.vlr2.style.borderBottomLeftRadius = "0px";
+                    vlrItens.vlr2.style.borderBottomRightRadius = "0px";
+                    vlrItens.vlr3.style.borderBottomLeftRadius = "0px";
+                    vlrItens.vlr3.style.borderBottomRightRadius = "0px";
+                    vlrItens.vlr4.style.borderBottomLeftRadius = "10px";
+                    vlrItens.vlr4.style.borderBottomRightRadius = "10px";
+                    valorSugerido.vlr1.style.display = "block"
+                    valorSugerido.vlr2.style.display = "block"
+                    valorSugerido.vlr3.style.display = "block"
+                    valorSugerido.vlr4.style.display = "none"
+                    valorSugerido.vlr4.innerText = ""
 
                 } else {
-                    document.getElementById("res_item1").style.borderBottomLeftRadius = "10px";
-                    document.getElementById("res_item1").style.borderBottomRightRadius = "10px";
-                    document.getElementById("res_item2").style.borderBottomLeftRadius = "10px";
-                    document.getElementById("res_item2").style.borderBottomRightRadius = "10px";
-                    document.getElementById("res_item3").style.borderBottomLeftRadius = "10px";
-                    document.getElementById("res_item3").style.borderBottomRightRadius = "10px";
-                    document.getElementById("res_item4").style.borderBottomLeftRadius = "10px";
-                    document.getElementById("res_item4").style.borderBottomRightRadius = "10px";
-                    document.getElementById("res_sug1").style.display = "none"
-                    document.getElementById("res_sug2").style.display = "none"
-                    document.getElementById("res_sug3").style.display = "none"
-                    document.getElementById("res_sug4").style.display = "none"
-                    document.getElementById('res_sug1').innerText = ""
-                    document.getElementById('res_sug2').innerText = ""
-                    document.getElementById('res_sug3').innerText = ""
-                    document.getElementById('res_sug4').innerText = ""
-                    document.getElementById('res_Ganho').innerText = "Ganho de: ---"
+                    vlrItens.vlr1.style.borderBottomLeftRadius = "10px";
+                    vlrItens.vlr1.style.borderBottomRightRadius = "10px";
+                    vlrItens.vlr2.style.borderBottomLeftRadius = "10px";
+                    vlrItens.vlr2.style.borderBottomRightRadius = "10px";
+                    vlrItens.vlr3.style.borderBottomLeftRadius = "10px";
+                    vlrItens.vlr3.style.borderBottomRightRadius = "10px";
+                    vlrItens.vlr4.style.borderBottomLeftRadius = "10px";
+                    vlrItens.vlr4.style.borderBottomRightRadius = "10px";
+                    valorSugerido.vlr1.style.display = "none"
+                    valorSugerido.vlr2.style.display = "none"
+                    valorSugerido.vlr3.style.display = "none"
+                    valorSugerido.vlr4.style.display = "none"
+                    valorSugerido.vlr1.innerText = ""
+                    valorSugerido.vlr2.innerText = ""
+                    valorSugerido.vlr3.innerText = ""
+                    valorSugerido.vlr4.innerText = ""
+                    resultCalculo.vlrGanho.innerText = "Ganho de: ---"
 
 
                 }
 
                 //----------------------------------------
 
-                document.getElementById("res_item4").innerText = "---"
+                vlrItens.vlr4.innerText = "---"
             }
 
-            if (document.getElementById('qtd_Prod3').checked == true) {
+            if (quantidadeProd.qtd3.checked == true) {
                 calcula3()
             }
 
-            document.getElementById('qtd_Prod3').onclick = function call_calcula3() {
+            quantidadeProd.qtd3.onclick = function call_calcula3() {
                 calcula3()
             }
 
@@ -358,22 +387,22 @@
                 const prcSug3 = vlrItem3 + (vlrItem3 * (percent_lucro / 100))
                 const prcSug4 = vlrItem4 + (vlrItem4 * (percent_lucro / 100))
 
-                document.getElementById("res_item1").innerText = vlrItem1.toLocaleString('pt-BR', {
+                vlrItens.vlr1.innerText = vlrItem1.toLocaleString('pt-BR', {
                     style: 'currency',
                     currency: 'BRL',
                     minimumFractionDigits: 2
                 })
-                document.getElementById("res_item2").innerText = vlrItem2.toLocaleString('pt-BR', {
+                vlrItens.vlr2.innerText = vlrItem2.toLocaleString('pt-BR', {
                     style: 'currency',
                     currency: 'BRL',
                     minimumFractionDigits: 2
                 })
-                document.getElementById("res_item3").innerText = vlrItem3.toLocaleString('pt-BR', {
+                vlrItens.vlr3.innerText = vlrItem3.toLocaleString('pt-BR', {
                     style: 'currency',
                     currency: 'BRL',
                     minimumFractionDigits: 2
                 })
-                document.getElementById("res_item4").innerText = vlrItem4.toLocaleString('pt-BR', {
+                vlrItens.vlr4.innerText = vlrItem4.toLocaleString('pt-BR', {
                     style: 'currency',
                     currency: 'BRL',
                     minimumFractionDigits: 2
@@ -381,64 +410,64 @@
 
                 //-- Calculo de lucro (itens) --
                 if (percent_lucro != 0) {
-                    document.getElementById('res_sug1').innerText = `+ ${percent_lucro}% de lucro\n` + prcSug1.toLocaleString('pt-BR', {
+                    valorSugerido.vlr1.innerText = `+ ${percent_lucro}% de lucro\n` + prcSug1.toLocaleString('pt-BR', {
                         style: 'currency',
                         currency: 'BRL',
                         minimumFractionDigits: 2
                     })
-                    document.getElementById('res_sug2').innerText = `+ ${percent_lucro}% de lucro\n` + prcSug2.toLocaleString('pt-BR', {
+                    valorSugerido.vlr2.innerText = `+ ${percent_lucro}% de lucro\n` + prcSug2.toLocaleString('pt-BR', {
                         style: 'currency',
                         currency: 'BRL',
                         minimumFractionDigits: 2
                     })
-                    document.getElementById('res_sug3').innerText = `+ ${percent_lucro}% de lucro\n` + prcSug3.toLocaleString('pt-BR', {
+                    valorSugerido.vlr3.innerText = `+ ${percent_lucro}% de lucro\n` + prcSug3.toLocaleString('pt-BR', {
                         style: 'currency',
                         currency: 'BRL',
                         minimumFractionDigits: 2
                     })
-                    document.getElementById('res_sug4').innerText = `+ ${percent_lucro}% de lucro\n` + prcSug4.toLocaleString('pt-BR', {
+                    valorSugerido.vlr4.innerText = `+ ${percent_lucro}% de lucro\n` + prcSug4.toLocaleString('pt-BR', {
                         style: 'currency',
                         currency: 'BRL',
                         minimumFractionDigits: 2
                     })
-                    document.getElementById("res_item1").style.borderBottomLeftRadius = "0px";
-                    document.getElementById("res_item1").style.borderBottomRightRadius = "0px";
-                    document.getElementById("res_item2").style.borderBottomLeftRadius = "0px";
-                    document.getElementById("res_item2").style.borderBottomRightRadius = "0px";
-                    document.getElementById("res_item3").style.borderBottomLeftRadius = "0px";
-                    document.getElementById("res_item3").style.borderBottomRightRadius = "0px";
-                    document.getElementById("res_item4").style.borderBottomLeftRadius = "0px";
-                    document.getElementById("res_item4").style.borderBottomRightRadius = "0px";
-                    document.getElementById("res_sug1").style.display = "block"
-                    document.getElementById("res_sug2").style.display = "block"
-                    document.getElementById("res_sug3").style.display = "block"
-                    document.getElementById("res_sug4").style.display = "block"
+                    vlrItens.vlr1.style.borderBottomLeftRadius = "0px";
+                    vlrItens.vlr1.style.borderBottomRightRadius = "0px";
+                    vlrItens.vlr2.style.borderBottomLeftRadius = "0px";
+                    vlrItens.vlr2.style.borderBottomRightRadius = "0px";
+                    vlrItens.vlr3.style.borderBottomLeftRadius = "0px";
+                    vlrItens.vlr3.style.borderBottomRightRadius = "0px";
+                    vlrItens.vlr4.style.borderBottomLeftRadius = "0px";
+                    vlrItens.vlr4.style.borderBottomRightRadius = "0px";
+                    valorSugerido.vlr1.style.display = "block"
+                    valorSugerido.vlr2.style.display = "block"
+                    valorSugerido.vlr3.style.display = "block"
+                    valorSugerido.vlr4.style.display = "block"
 
                 } else {
-                    document.getElementById("res_item1").style.borderBottomLeftRadius = "10px";
-                    document.getElementById("res_item1").style.borderBottomRightRadius = "10px";
-                    document.getElementById("res_item2").style.borderBottomLeftRadius = "10px";
-                    document.getElementById("res_item2").style.borderBottomRightRadius = "10px";
-                    document.getElementById("res_item3").style.borderBottomLeftRadius = "10px";
-                    document.getElementById("res_item3").style.borderBottomRightRadius = "10px";
-                    document.getElementById("res_item4").style.borderBottomLeftRadius = "10px";
-                    document.getElementById("res_item4").style.borderBottomRightRadius = "10px";
-                    document.getElementById("res_sug1").style.display = "none"
-                    document.getElementById("res_sug2").style.display = "none"
-                    document.getElementById("res_sug3").style.display = "none"
-                    document.getElementById("res_sug4").style.display = "none"
-                    document.getElementById('res_sug1').innerText = ""
-                    document.getElementById('res_sug2').innerText = ""
-                    document.getElementById('res_sug3').innerText = ""
-                    document.getElementById('res_sug4').innerText = ""
-                    document.getElementById('res_Ganho').innerText = "Ganho de: ---"
+                    vlrItens.vlr1.style.borderBottomLeftRadius = "10px";
+                    vlrItens.vlr1.style.borderBottomRightRadius = "10px";
+                    vlrItens.vlr2.style.borderBottomLeftRadius = "10px";
+                    vlrItens.vlr2.style.borderBottomRightRadius = "10px";
+                    vlrItens.vlr3.style.borderBottomLeftRadius = "10px";
+                    vlrItens.vlr3.style.borderBottomRightRadius = "10px";
+                    vlrItens.vlr4.style.borderBottomLeftRadius = "10px";
+                    vlrItens.vlr4.style.borderBottomRightRadius = "10px";
+                    valorSugerido.vlr1.style.display = "none"
+                    valorSugerido.vlr2.style.display = "none"
+                    valorSugerido.vlr3.style.display = "none"
+                    valorSugerido.vlr4.style.display = "none"
+                    valorSugerido.vlr1.innerText = ""
+                    valorSugerido.vlr2.innerText = ""
+                    valorSugerido.vlr3.innerText = ""
+                    valorSugerido.vlr4.innerText = ""
+                    resultCalculo.vlrGanho.innerText = "Ganho de: ---"
                 }
                 //----------------------------------------
             }
-            if (document.getElementById('qtd_Prod4').checked == true) {
+            if (quantidadeProd.qtd4.checked == true) {
                 calcula4()
             }
-            document.getElementById('qtd_Prod4').onclick = function call_calcula4() {
+            quantidadeProd.qtd4.onclick = function call_calcula4() {
                 calcula4()
             }
 
