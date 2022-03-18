@@ -115,7 +115,7 @@
                     </div>
                     <div style="display: none;">
                         <p id="titulo_desc_Revend" class="titulo_div_Revend">Desconto da Revendedora</p>
-                        <p id="res_Revend">---</p>
+                        <p id="res_Desc_Revend">---</p>
                     </div>
 
                 </div>
@@ -148,7 +148,7 @@
             var vlrVenda = vlrCusto + (total * (percent_lucro / 100))
             var vlrGanho = vlrVenda - vlrCusto
 
-            document.getElementById("res_Revend").innerText = descVend.toLocaleString('pt-BR', {
+            document.getElementById("res_Desc_Revend").innerText = descVend.toLocaleString('pt-BR', {
                 style: 'currency',
                 currency: 'BRL',
                 minimumFractionDigits: 2
