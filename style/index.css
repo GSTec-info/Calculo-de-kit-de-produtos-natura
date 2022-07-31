@@ -1,5 +1,10 @@
+@font-face {
+    font-family: 'src_calibri';
+    src: url('../fonts/calibri.ttf');
+}
+
 :root {
-    --fonte-padrao: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
+    --fonte-padrao: src_calibri, sans-serif;
     --Sombra-padrao: 0px 0px 10px rgba(0, 0, 0, 0.205);
 }
 
@@ -53,6 +58,12 @@ h1 {
 
 #div_total>label {
     font-size: 1.3em;
+}
+
+#aviso_total_kit {
+    font-size: 1.2em;
+    color: red;
+    text-align: center;
 }
 
 input {

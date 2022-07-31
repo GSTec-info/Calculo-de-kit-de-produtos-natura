@@ -15,7 +15,9 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-    <script src="sweetalert.js"></script>
+    <script src="./js/sweetalert.js"></script>
+
+
     <style>
         @media screen and (min-width:400px) and (max-width:800px) {
             #div_itens {
@@ -52,6 +54,7 @@
         <div id="div_calculo">
             <div id="div_total">
                 <label for="total_kit">----- Valor do Kit (R$) -----</label>
+                <h2 id="aviso_total_kit" style="display: none;"></h2>
                 <input type="number" class="campo_total_kit" inputmode="decimal" min="0" step=".01" name="iTotal_kit" id="total_kit" onkeyup="calcula()">
 
             </div>
@@ -79,22 +82,22 @@
                 <div id="div_itens">
                     <div>
                         <p class="tituloItem">Item 1</p>
-                        <p id="res_item1" class="res_item">---</p>
+                        <p id="res_item1" class="res_item">R$ 0,00</p>
                         <p id="res_sug1" class="res_sug"></p>
                     </div>
                     <div>
                         <p class="tituloItem">Item 2</p>
-                        <p id="res_item2" class="res_item">---</p>
+                        <p id="res_item2" class="res_item">R$ 0,00</p>
                         <p id="res_sug2" class="res_sug"></p>
                     </div>
                     <div id="div_Item3">
                         <p class="tituloItem">Item 3</p>
-                        <p id="res_item3" class="res_item">---</p>
+                        <p id="res_item3" class="res_item">R$ 0,00</p>
                         <p id="res_sug3" class="res_sug"></p>
                     </div>
                     <div id="div_Item4">
                         <p class="tituloItem">Item 4</p>
-                        <p id="res_item4" class="res_item">---</p>
+                        <p id="res_item4" class="res_item">R$ 0,00</p>
                         <p id="res_sug4" class="res_sug"></p>
                     </div>
                 </div>
@@ -104,375 +107,26 @@
                         <div style="display: flex; align-items: center;">
                             <img src="images/emoji_money.png" style="margin: 0.8em 3px 0.8em 1em; width: 60px; height: 60px; ">
                             <div style=" width: 100%; padding-right: 3.5em;">
-                                <p id="res_Venda">---</p>
-                                <p id="res_Ganho">Ganho de: ---</p>
+                                <p id="res_Venda">R$ 0,00</p>
+                                <p id="res_Ganho">Ganho de: R$ 0,00</p>
                             </div>
                         </div>
                     </div>
                     <div>
                         <p id="titulo_vlr_custo" class="titulo_div_Revend">Valor de Custo</p>
-                        <p id="res_Custo">---</p>
+                        <p id="res_Custo">R$ 0,00</p>
                     </div>
                     <div style="display: none;">
                         <p id="titulo_desc_Revend" class="titulo_div_Revend">Desconto da Revendedora</p>
-                        <p id="res_Revend">---</p>
+                        <p id="res_Revend">R$ 0,00</p>
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- Calculos -->
-    <script>
-        const quantidadeProd = {
-            qtd2: document.getElementById('qtd_Prod2'),
-            qtd3: document.getElementById('qtd_Prod3'),
-            qtd4: document.getElementById('qtd_Prod4')
-        }
+    <script src="./js/index.js"></script>
 
-        const vlrItens = {
-            vlr1: document.getElementById("res_item1"),
-            vlr2: document.getElementById("res_item2"),
-            vlr3: document.getElementById("res_item3"),
-            vlr4: document.getElementById("res_item4")
-        }
-
-        const valorSugerido = {
-            vlr1: document.getElementById("res_sug1"),
-            vlr2: document.getElementById("res_sug2"),
-            vlr3: document.getElementById("res_sug3"),
-            vlr4: document.getElementById("res_sug4")
-        }
-
-        const resultCalculo = {
-            descontoRevend: document.getElementById("res_Revend"),
-            vlrCusto: document.getElementById("res_Custo"),
-            vlrVenda: document.getElementById('res_Venda'),
-            vlrGanho: document.getElementById('res_Ganho')
-        }
-
-        valorSugerido.vlr1.style.display = "none"
-        valorSugerido.vlr2.style.display = "none"
-        valorSugerido.vlr3.style.display = "none"
-        valorSugerido.vlr4.style.display = "none"
-
-
-        function info() {
-            swal({
-                title: "Informações",
-                text: "1. O lucro de cada item e do preço final é calculado em cima do valor de custo.\n\n2. A porcentagem de desconto em cima do kit é de 30%, então o valor de custo é o valor total do kit menos essa porcentagem.",
-                icon: "info"
-            })
-        }
-
-        function calcula() {
-            // Calculo geral
-            const total = document.getElementById("total_kit").value
-            const descVend = total * 0.3
-            const vlrCusto = total - descVend
-            const percent_lucro = document.getElementById('porcent_itens').value
-            const vlrVenda = vlrCusto + (vlrCusto * (percent_lucro / 100))
-            const vlrGanho = vlrVenda - vlrCusto
-
-            resultCalculo.descontoRevend.innerText = descVend.toLocaleString('pt-BR', {
-                style: 'currency',
-                currency: 'BRL',
-                minimumFractionDigits: 2
-            })
-            resultCalculo.vlrCusto.innerText = vlrCusto.toLocaleString('pt-BR', {
-                style: 'currency',
-                currency: 'BRL',
-                minimumFractionDigits: 2
-            })
-            resultCalculo.vlrVenda.innerText = vlrVenda.toLocaleString('pt-BR', {
-                style: 'currency',
-                currency: 'BRL',
-                minimumFractionDigits: 2
-            })
-            if (percent_lucro != 0) {
-                resultCalculo.vlrGanho.innerText = "Ganho de: " + vlrGanho.toLocaleString('pt-BR', {
-                    style: 'currency',
-                    currency: 'BRL',
-                    minimumFractionDigits: 2
-                })
-            } else {
-                resultCalculo.vlrGanho.innerText = "Ganho de: ---"
-            }
-
-            // Calculo para 2 itens
-            function calcula2() {
-                const somaItens = 1 + 2
-                const prcBase = vlrCusto / somaItens
-                const vlrItem1 = prcBase
-                const vlrItem2 = prcBase * 2
-                const prcSug1 = vlrItem1 + (vlrItem1 * (percent_lucro / 100))
-                const prcSug2 = vlrItem2 + (vlrItem2 * (percent_lucro / 100))
-
-
-                vlrItens.vlr1.innerText = vlrItem1.toLocaleString('pt-BR', {
-                    style: 'currency',
-                    currency: 'BRL',
-                    minimumFractionDigits: 2
-                })
-                vlrItens.vlr2.innerText = vlrItem2.toLocaleString('pt-BR', {
-                    style: 'currency',
-                    currency: 'BRL',
-                    minimumFractionDigits: 2
-                })
-
-                //-- Calculo de lucro (itens) --
-                if (percent_lucro != 0) {
-                    valorSugerido.vlr1.innerText = `+ ${percent_lucro}% de lucro\n` + prcSug1.toLocaleString('pt-BR', {
-                        style: 'currency',
-                        currency: 'BRL',
-                        minimumFractionDigits: 2
-                    })
-                    valorSugerido.vlr2.innerText = `+ ${percent_lucro}% de lucro\n` + prcSug2.toLocaleString('pt-BR', {
-                        style: 'currency',
-                        currency: 'BRL',
-                        minimumFractionDigits: 2
-                    })
-
-                    vlrItens.vlr1.style.borderBottomLeftRadius = "0px";
-                    vlrItens.vlr1.style.borderBottomRightRadius = "0px";
-                    vlrItens.vlr2.style.borderBottomLeftRadius = "0px";
-                    vlrItens.vlr2.style.borderBottomRightRadius = "0px";
-                    vlrItens.vlr3.style.borderBottomLeftRadius = "10px";
-                    vlrItens.vlr3.style.borderBottomRightRadius = "10px";
-                    vlrItens.vlr4.style.borderBottomLeftRadius = "10px";
-                    vlrItens.vlr4.style.borderBottomRightRadius = "10px";
-                    valorSugerido.vlr1.style.display = "block"
-                    valorSugerido.vlr2.style.display = "block"
-                    valorSugerido.vlr3.style.display = "none"
-                    valorSugerido.vlr4.style.display = "none"
-                    valorSugerido.vlr3.innerText = ""
-                    valorSugerido.vlr4.innerText = ""
-
-                } else {
-                    vlrItens.vlr1.style.borderBottomLeftRadius = "10px";
-                    vlrItens.vlr1.style.borderBottomRightRadius = "10px";
-                    vlrItens.vlr2.style.borderBottomLeftRadius = "10px";
-                    vlrItens.vlr2.style.borderBottomRightRadius = "10px";
-                    vlrItens.vlr3.style.borderBottomLeftRadius = "10px";
-                    vlrItens.vlr3.style.borderBottomRightRadius = "10px";
-                    vlrItens.vlr4.style.borderBottomLeftRadius = "10px";
-                    vlrItens.vlr4.style.borderBottomRightRadius = "10px";
-                    valorSugerido.vlr1.style.display = "none"
-                    valorSugerido.vlr2.style.display = "none"
-                    valorSugerido.vlr3.style.display = "none"
-                    valorSugerido.vlr4.style.display = "none"
-                    valorSugerido.vlr1.innerText = ""
-                    valorSugerido.vlr2.innerText = ""
-                    valorSugerido.vlr3.innerText = ""
-                    valorSugerido.vlr4.innerText = ""
-                    resultCalculo.vlrGanho.innerText = "Ganho de: ---"
-
-
-                }
-                //----------------------------------------
-                vlrItens.vlr3.innerText = "---"
-                vlrItens.vlr4.innerText = "---"
-
-            }
-            if (quantidadeProd.qtd2.checked == true) {
-                calcula2()
-            }
-            quantidadeProd.qtd2.onclick = function() {
-                calcula2()
-            }
-
-            // Calculo para 3 itens
-            function calcula3() {
-                const somaItens = 1 + 2 + 3
-                const prcBase = vlrCusto / somaItens
-                const vlrItem1 = prcBase
-                const vlrItem2 = prcBase * 2
-                const vlrItem3 = prcBase * 3
-                const prcSug1 = vlrItem1 + (vlrItem1 * (percent_lucro / 100))
-                const prcSug2 = vlrItem2 + (vlrItem2 * (percent_lucro / 100))
-                const prcSug3 = vlrItem3 + (vlrItem3 * (percent_lucro / 100))
-
-                vlrItens.vlr1.innerText = vlrItem1.toLocaleString('pt-BR', {
-                    style: 'currency',
-                    currency: 'BRL',
-                    minimumFractionDigits: 2
-                })
-                vlrItens.vlr2.innerText = vlrItem2.toLocaleString('pt-BR', {
-                    style: 'currency',
-                    currency: 'BRL',
-                    minimumFractionDigits: 2
-                })
-                vlrItens.vlr3.innerText = vlrItem3.toLocaleString('pt-BR', {
-                    style: 'currency',
-                    currency: 'BRL',
-                    minimumFractionDigits: 2
-                })
-
-                //-- Calculo de lucro (itens) --
-                if (percent_lucro != 0) {
-                    valorSugerido.vlr1.innerText = `+ ${percent_lucro}% de lucro\n` + prcSug1.toLocaleString('pt-BR', {
-                        style: 'currency',
-                        currency: 'BRL',
-                        minimumFractionDigits: 2
-                    })
-                    valorSugerido.vlr2.innerText = `+ ${percent_lucro}% de lucro\n` + prcSug2.toLocaleString('pt-BR', {
-                        style: 'currency',
-                        currency: 'BRL',
-                        minimumFractionDigits: 2
-                    })
-                    valorSugerido.vlr3.innerText = `+ ${percent_lucro}% de lucro\n` + prcSug3.toLocaleString('pt-BR', {
-                        style: 'currency',
-                        currency: 'BRL',
-                        minimumFractionDigits: 2
-                    })
-                    vlrItens.vlr1.style.borderBottomLeftRadius = "0px";
-                    vlrItens.vlr1.style.borderBottomRightRadius = "0px";
-                    vlrItens.vlr2.style.borderBottomLeftRadius = "0px";
-                    vlrItens.vlr2.style.borderBottomRightRadius = "0px";
-                    vlrItens.vlr3.style.borderBottomLeftRadius = "0px";
-                    vlrItens.vlr3.style.borderBottomRightRadius = "0px";
-                    vlrItens.vlr4.style.borderBottomLeftRadius = "10px";
-                    vlrItens.vlr4.style.borderBottomRightRadius = "10px";
-                    valorSugerido.vlr1.style.display = "block"
-                    valorSugerido.vlr2.style.display = "block"
-                    valorSugerido.vlr3.style.display = "block"
-                    valorSugerido.vlr4.style.display = "none"
-                    valorSugerido.vlr4.innerText = ""
-
-                } else {
-                    vlrItens.vlr1.style.borderBottomLeftRadius = "10px";
-                    vlrItens.vlr1.style.borderBottomRightRadius = "10px";
-                    vlrItens.vlr2.style.borderBottomLeftRadius = "10px";
-                    vlrItens.vlr2.style.borderBottomRightRadius = "10px";
-                    vlrItens.vlr3.style.borderBottomLeftRadius = "10px";
-                    vlrItens.vlr3.style.borderBottomRightRadius = "10px";
-                    vlrItens.vlr4.style.borderBottomLeftRadius = "10px";
-                    vlrItens.vlr4.style.borderBottomRightRadius = "10px";
-                    valorSugerido.vlr1.style.display = "none"
-                    valorSugerido.vlr2.style.display = "none"
-                    valorSugerido.vlr3.style.display = "none"
-                    valorSugerido.vlr4.style.display = "none"
-                    valorSugerido.vlr1.innerText = ""
-                    valorSugerido.vlr2.innerText = ""
-                    valorSugerido.vlr3.innerText = ""
-                    valorSugerido.vlr4.innerText = ""
-                    resultCalculo.vlrGanho.innerText = "Ganho de: ---"
-
-
-                }
-
-                //----------------------------------------
-
-                vlrItens.vlr4.innerText = "---"
-            }
-
-            if (quantidadeProd.qtd3.checked == true) {
-                calcula3()
-            }
-
-            quantidadeProd.qtd3.onclick = function() {
-                calcula3()
-            }
-
-            // Calculo para 4 itens
-            function calcula4() {
-                const somaItens = 1 + 2 + 3 + 4
-                const prcBase = vlrCusto / somaItens
-                const vlrItem1 = prcBase
-                const vlrItem2 = prcBase * 2
-                const vlrItem3 = prcBase * 3
-                const vlrItem4 = prcBase * 4
-                const prcSug1 = vlrItem1 + (vlrItem1 * (percent_lucro / 100))
-                const prcSug2 = vlrItem2 + (vlrItem2 * (percent_lucro / 100))
-                const prcSug3 = vlrItem3 + (vlrItem3 * (percent_lucro / 100))
-                const prcSug4 = vlrItem4 + (vlrItem4 * (percent_lucro / 100))
-
-                vlrItens.vlr1.innerText = vlrItem1.toLocaleString('pt-BR', {
-                    style: 'currency',
-                    currency: 'BRL',
-                    minimumFractionDigits: 2
-                })
-                vlrItens.vlr2.innerText = vlrItem2.toLocaleString('pt-BR', {
-                    style: 'currency',
-                    currency: 'BRL',
-                    minimumFractionDigits: 2
-                })
-                vlrItens.vlr3.innerText = vlrItem3.toLocaleString('pt-BR', {
-                    style: 'currency',
-                    currency: 'BRL',
-                    minimumFractionDigits: 2
-                })
-                vlrItens.vlr4.innerText = vlrItem4.toLocaleString('pt-BR', {
-                    style: 'currency',
-                    currency: 'BRL',
-                    minimumFractionDigits: 2
-                })
-
-                //-- Calculo de lucro (itens) --
-                if (percent_lucro != 0) {
-                    valorSugerido.vlr1.innerText = `+ ${percent_lucro}% de lucro\n` + prcSug1.toLocaleString('pt-BR', {
-                        style: 'currency',
-                        currency: 'BRL',
-                        minimumFractionDigits: 2
-                    })
-                    valorSugerido.vlr2.innerText = `+ ${percent_lucro}% de lucro\n` + prcSug2.toLocaleString('pt-BR', {
-                        style: 'currency',
-                        currency: 'BRL',
-                        minimumFractionDigits: 2
-                    })
-                    valorSugerido.vlr3.innerText = `+ ${percent_lucro}% de lucro\n` + prcSug3.toLocaleString('pt-BR', {
-                        style: 'currency',
-                        currency: 'BRL',
-                        minimumFractionDigits: 2
-                    })
-                    valorSugerido.vlr4.innerText = `+ ${percent_lucro}% de lucro\n` + prcSug4.toLocaleString('pt-BR', {
-                        style: 'currency',
-                        currency: 'BRL',
-                        minimumFractionDigits: 2
-                    })
-                    vlrItens.vlr1.style.borderBottomLeftRadius = "0px";
-                    vlrItens.vlr1.style.borderBottomRightRadius = "0px";
-                    vlrItens.vlr2.style.borderBottomLeftRadius = "0px";
-                    vlrItens.vlr2.style.borderBottomRightRadius = "0px";
-                    vlrItens.vlr3.style.borderBottomLeftRadius = "0px";
-                    vlrItens.vlr3.style.borderBottomRightRadius = "0px";
-                    vlrItens.vlr4.style.borderBottomLeftRadius = "0px";
-                    vlrItens.vlr4.style.borderBottomRightRadius = "0px";
-                    valorSugerido.vlr1.style.display = "block"
-                    valorSugerido.vlr2.style.display = "block"
-                    valorSugerido.vlr3.style.display = "block"
-                    valorSugerido.vlr4.style.display = "block"
-
-                } else {
-                    vlrItens.vlr1.style.borderBottomLeftRadius = "10px";
-                    vlrItens.vlr1.style.borderBottomRightRadius = "10px";
-                    vlrItens.vlr2.style.borderBottomLeftRadius = "10px";
-                    vlrItens.vlr2.style.borderBottomRightRadius = "10px";
-                    vlrItens.vlr3.style.borderBottomLeftRadius = "10px";
-                    vlrItens.vlr3.style.borderBottomRightRadius = "10px";
-                    vlrItens.vlr4.style.borderBottomLeftRadius = "10px";
-                    vlrItens.vlr4.style.borderBottomRightRadius = "10px";
-                    valorSugerido.vlr1.style.display = "none"
-                    valorSugerido.vlr2.style.display = "none"
-                    valorSugerido.vlr3.style.display = "none"
-                    valorSugerido.vlr4.style.display = "none"
-                    valorSugerido.vlr1.innerText = ""
-                    valorSugerido.vlr2.innerText = ""
-                    valorSugerido.vlr3.innerText = ""
-                    valorSugerido.vlr4.innerText = ""
-                    resultCalculo.vlrGanho.innerText = "Ganho de: ---"
-                }
-                //----------------------------------------
-            }
-            if (quantidadeProd.qtd4.checked == true) {
-                calcula4()
-            }
-            quantidadeProd.qtd4.onclick = function() {
-                calcula4()
-            }
-
-        }
-    </script>
 </body>
 
 </html>
