@@ -293,6 +293,7 @@ label {
     color: white;
     border-radius: 8px;
     cursor: pointer;
+    transition: 1s;
 }
 
 .botao:hover {
