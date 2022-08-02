@@ -1,0 +1,271 @@
+@keyframes mostrarModal {
+    from {
+        opacity: 0;
+        transform: translate3d(0, -20px, -5px);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+#modal-container-config {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.336);
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+#modal-container-config.mostrar {
+    display: flex;
+}
+
+#modal-config {
+    position: absolute;
+    width: 20%;
+    min-width: 20em;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.527);
+    padding: 1.2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#modal-config>.modal-header>h2 {
+    text-align: center;
+}
+
+#modal-config>.modal-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 1em;
+}
+
+#modal-config>.modal-footer>button {
+    width: 100%;
+}
+
+.mostrar #modal-config {
+    animation: mostrarModal 0.5s;
+}
+
+#modal-container-calc {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.336);
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+#modal-container-calc.mostrar {
+    display: flex;
+}
+
+#modal-calc {
+    position: absolute;
+    width: 15em;
+    min-width: 18em;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.527);
+    padding: 1.2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.mostrar #modal-calc {
+    animation: mostrarModal 0.5s;
+}
+
+.modal-header {
+    align-items: center;
+    padding-bottom: 1em;
+}
+
+#modal-alt-btn {
+    font-weight: bold;
+    background-color: rgb(255, 149, 149);
+    border-style: solid;
+    border-width: 3px;
+    border-color: rgb(255, 149, 149);
+}
+
+#modal-alt-btn:hover {
+    border-style: solid;
+    border-color: rgb(107, 0, 0);
+    border-width: 3px;
+    background-color: rgb(255, 0, 0);
+}
+
+.modal-footer {
+    padding-top: 1em;
+    display: flex;
+    justify-content: start;
+    gap: 5px;
+}
+
+#display-calc {
+    padding-bottom: 1.5em;
+}
+
+#display-calc>span {
+    display: flex;
+    height: 2em;
+    border: 2px solid rgb(184, 184, 184);
+    border-radius: 10px;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 0.5em;
+    font-size: 1.5em;
+}
+
+#botoes-calc {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.linha-numerica {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+.btn-action {
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    background-color: rgb(43, 40, 255);
+    border: none;
+    font-size: 1.2em;
+    padding: 1em;
+    width: 1.3em;
+    height: 1.3em;
+    border-radius: 20px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn-action:hover {
+    background-color: rgb(0, 118, 253);
+}
+
+.btn-num {
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    background-color: rgb(38, 36, 172);
+    border: none;
+    font-size: 1.2em;
+    padding: 1em;
+    width: 1.3em;
+    height: 1.3em;
+    border-radius: 20px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn-num:hover {
+    background-color: rgb(54, 72, 236);
+}
+
+#btn-back {
+    width: 5em;
+    border-radius: 20px;
+}
+
+#modal-btn-fechar-calc {
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    background-color: rgb(255, 118, 118);
+    border: none;
+    font-size: 1.2em;
+    padding: 1em;
+    width: 100%;
+    height: 1.3em;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+}
+
+#modal-btn-fechar-calc:hover {
+    background-color: rgb(255, 0, 0);
+}
+
+#modal-container-info {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.336);
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+#modal-info {
+    position: absolute;
+    width: 20%;
+    min-width: 18em;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.527);
+    padding: 1.2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#modal-container-info.mostrar {
+    display: flex;
+}
+
+.mostrar #modal-info {
+    animation: mostrarModal 0.5s;
+}
+
+#modal-info>.modal-header {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+#modal-info>.modal-header>img {
+    width: 8em;
+}
+
+#modal-info>.modal-header>h1 {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+#modal-info>.modal-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#modal-info>.modal-body>p {
+    font-size: 1.1em;
+}
+
+#modal-info>.modal-footer>button {
+    width: 100%;
+}

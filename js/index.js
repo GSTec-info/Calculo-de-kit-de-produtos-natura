@@ -32,22 +32,30 @@ valorSugerido.vlr4.style.display = "none"
 
 const avisoTotalKit = document.getElementById('aviso_total_kit')
 
-function info() {
-    swal({
-        title: "Informações",
-        text: "1. O lucro de cada item e do preço final é calculado em cima do valor de custo.\n\n2. A porcentagem de desconto em cima do kit é de 30%, então o valor de custo é o valor total do kit menos essa porcentagem.",
-        icon: "info"
-    })
+
+function getPercentRevend() {
+    const percentRevend = document.getElementById('porcent_revend').value
+    if (percentRevend == "") {
+        return 0
+    }
+    return percentRevend
 }
 
 function calcula() {
     // Calculo geral
     const total = document.getElementById("total_kit").value
-    const descVend = total * 0.3
-    const vlrCusto = total - descVend
     const percent_lucro = document.getElementById('porcent_itens').value
-    const vlrVenda = vlrCusto + (vlrCusto * (percent_lucro / 100))
-    const vlrGanho = vlrVenda - vlrCusto
+    let percentRevend = parseFloat(getPercentRevend()) / 100
+    const descVend = parseFloat(total * percentRevend)
+    const vlrCusto = parseFloat(total - descVend)
+    let vlrVenda = vlrCusto + (parseFloat(vlrCusto) * (parseFloat(percent_lucro) / 100))
+    let vlrGanho = vlrVenda - vlrCusto
+    if (vlrCusto == 0) {
+        vlrVenda = parseFloat(total + (total * (percent_lucro / 100)))
+        vlrGanho = parseFloat(vlrVenda - total)
+    }
+
+
 
     if (total == "") {
         vlrItens.vlr1.innerText = 'R$ 0,00'
@@ -110,7 +118,13 @@ function calcula() {
     // Calculo para 2 itens
     function calcula2() {
         const somaItens = 1 + 2
-        const prcBase = vlrCusto / somaItens
+        let prcBase = 0
+        if (vlrCusto == '0') {
+            prcBase = total / somaItens
+        } else {
+            prcBase = vlrCusto / somaItens
+        }
+
         const vlrItem1 = prcBase
         const vlrItem2 = prcBase * 2
         const prcSug1 = vlrItem1 + (vlrItem1 * (percent_lucro / 100))
@@ -191,13 +205,19 @@ function calcula() {
     // Calculo para 3 itens
     function calcula3() {
         const somaItens = 1 + 2 + 3
-        const prcBase = vlrCusto / somaItens
+        let prcBase = 0
+        if (vlrCusto == '0') {
+            prcBase = total / somaItens
+        } else {
+            prcBase = vlrCusto / somaItens
+        }
         let vlrItem1 = prcBase
         let vlrItem2 = prcBase * 2
         let vlrItem3 = prcBase * 3
         const prcSug1 = vlrItem1 + (vlrItem1 * (percent_lucro / 100))
         const prcSug2 = vlrItem2 + (vlrItem2 * (percent_lucro / 100))
         const prcSug3 = vlrItem3 + (vlrItem3 * (percent_lucro / 100))
+
 
         vlrItens.vlr1.innerText = vlrItem1.toLocaleString('pt-BR', {
             style: 'currency',
@@ -284,7 +304,12 @@ function calcula() {
     // Calculo para 4 itens
     function calcula4() {
         const somaItens = 1 + 2 + 3 + 4
-        const prcBase = vlrCusto / somaItens
+        let prcBase = 0
+        if (vlrCusto == '0') {
+            prcBase = total / somaItens
+        } else {
+            prcBase = vlrCusto / somaItens
+        }
         const vlrItem1 = prcBase
         const vlrItem2 = prcBase * 2
         const vlrItem3 = prcBase * 3

@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/index.css">
+    <link rel="stylesheet" href="style/elements.css">
     <title>Calculo de Kit</title>
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32qtd32" href="images/favicon-32qtd32.png">
@@ -48,7 +49,9 @@
 <body>
     <h1>Cálculo de KIT</h1>
     <div id="div_botao">
-        <button onclick="info()" class="botao">Informações</button>
+        <img id="icon-config" onclick="abreConfig()" src="./images/icon-config.png" alt="Config">
+        <button onclick="abreCalc()" class="botao">Calc</button>
+        <button onclick="abreInfo()" class="botao">Informações</button>
     </div>
     <main>
         <div id="div_calculo">
@@ -124,8 +127,87 @@
             </div>
         </div>
     </main>
+    <!-- Modais -->
+    <!-- Configurações -->
+    <div id="modal-container-config">
+        <div id="modal-config">
+            <div class="modal-header">
+                <h2>Porcentagem de Desconto</h2>
+            </div>
+            <div class="modal-body">
+                <input type="number" inputmode="decimal" min="0" max="100" step=".01" name="porcent_revend" id="porcent_revend" onkeyup="calcula()" value="30">
+            </div>
+            <div class="modal-footer">
+                <button id="modal-alt-btn" class="botao" onclick="abreConfig()">Fechar</button>
+            </div>
+        </div>
+    </div>
+    <!-- Calculadora -->
+    <div id="modal-container-calc">
+        <div id="modal-calc">
+            <div class="modal-header">
+                <h2>Calculadora</h2>
+            </div>
+            <div class="modal-body">
+                <div id="display-calc">
+                    <span id="res-calc"></span>
+                </div>
+                <div id="botoes-calc">
+                    <div class="linha-numerica">
+                        <button class="btn-action" id="btn-clear" onclick="clearCalc()">C</button>
+                        <button class="btn-action" id="btn-back" onclick="backCalc()">&larr;</button>
+                    </div>
+                    <div class="linha-numerica">
+                        <button id="btn-calc-7" class="btn-num">7</button>
+                        <button id="btn-calc-8" class="btn-num">8</button>
+                        <button id="btn-calc-9" class="btn-num">9</button>
+                        <button id="btn-div" class="btn-action">&divide;</button>
+                    </div>
+                    <div class="linha-numerica">
+                        <button id="btn-calc-4" class="btn-num">4</button>
+                        <button id="btn-calc-5" class="btn-num">5</button>
+                        <button id="btn-calc-6" class="btn-num">6</button>
+                        <button id="btn-calc-mult" class="btn-action">x</button>
+                    </div>
+                    <div class="linha-numerica">
+                        <button id="btn-calc-1" class="btn-num">1</button>
+                        <button id="btn-calc-2" class="btn-num">2</button>
+                        <button id="btn-calc-3" class="btn-num">3</button>
+                        <button id="btn-calc-sub" class="btn-action">-</button>
+                    </div>
+                    <div class="linha-numerica">
+                        <button id="btn-calc-0" class="btn-num">0</button>
+                        <button id="btn-calc-ponto" class="btn-num">.</button>
+                        <button id="btn-calc-igual" class="btn-action">=</button>
+                        <button id="btn-calc-add" class="btn-action">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="modal-btn-fechar-calc" class="botao" onclick="abreCalc()">Fechar</button>
+            </div>
+        </div>
+    </div>
+    <!-- Informações -->
+    <div id="modal-container-info">
+        <div id="modal-info">
+            <div class="modal-header">
+                <img src="./images/icon-info.png" alt="Info">
+                <h2>Informações</h2>
+            </div>
+            <div class="modal-body">
+                <p>1. O lucro de cada item e do preço final é calculado em cima do valor de custo.</p>
+                <p>2. A porcentagem de desconto em cima do kit é de 30% po padrão, então o valor de custo é o valor total do kit menos essa porcentagem.</p>
+                <p>3. Caso necessite trocar a porcentagem de desconto, vá no ícone de "engrenagem" para fazer a alteração</p>
+            </div>
+            <div class="modal-footer">
+                <button id="modal-btn-fechar-info" class="botao" onclick="abreInfo()">OK</button>
+            </div>
+        </div>
+    </div>
 
     <script src="./js/index.js"></script>
+    <script src="./js/elements.js"></script>
 
 </body>
 
