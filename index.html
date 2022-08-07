@@ -49,9 +49,14 @@
 <body>
     <h1>Cálculo de KIT</h1>
     <div id="div_botao">
+<<<<<<< Updated upstream
         <img id="icon-config" onclick="abreConfig()" src="./images/icon-config.png" alt="Config">
         <button onclick="abreCalc()" class="botao">Calc</button>
         <button onclick="abreInfo()" class="botao">Informações</button>
+=======
+        <button onclick="abreModal()" class="botao" id="config-btn">⚙️</button>
+        <button onclick="info()" class="botao">Informações</button>
+>>>>>>> Stashed changes
     </div>
     <main>
         <div id="div_calculo">
@@ -128,6 +133,7 @@
         </div>
     </main>
     <!-- Modais -->
+<<<<<<< Updated upstream
     <!-- Configurações -->
     <div id="modal-container-config">
         <div id="modal-config">
@@ -205,7 +211,23 @@
             </div>
         </div>
     </div>
+=======
+    <div id="modal-container">
+        <div id="modal">
+            <div id="modal-header">
+                <h2>Porcentagem da Revendedora</h2>
+>>>>>>> Stashed changes
 
+            </div>
+            <div id="modal-body">
+                <input type="number" inputmode="decimal" min="0" max="100" step=".01" name="porcent_revend" id="porcent_revend" onkeyup="calcula()">
+            </div>
+            <div id="modal-footer">
+                <button id="modal-alt-btn" class="botao" onclick="alteraPorcentRevend()">Alterar</button>
+                <button id="modal-close-btn" class="botao" onclick="fechaModal()">Cancelar</button>
+            </div>
+        </div>
+    </div>
     <script src="./js/index.js"></script>
     <script src="./js/elements.js"></script>
 
