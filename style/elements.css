@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 @keyframes mostrarModal {
     from {
         opacity: 0;
@@ -11,9 +10,6 @@
 }
 
 #modal-container-config {
-=======
-#modal-container {
->>>>>>> Stashed changes
     position: fixed;
     background-color: rgba(0, 0, 0, 0.336);
     width: 100vw;
@@ -26,7 +22,6 @@
     z-index: 999;
 }
 
-<<<<<<< Updated upstream
 #modal-container-config.mostrar {
     display: flex;
 }
@@ -35,16 +30,6 @@
     position: absolute;
     width: 20%;
     min-width: 20em;
-=======
-#modal-container.mostrar {
-    display: flex;
-}
-
-#modal {
-    position: absolute;
-    width: 35em;
-    min-width: 18em;
->>>>>>> Stashed changes
     background-color: white;
     border-radius: 10px;
     box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.527);
@@ -54,7 +39,6 @@
     justify-content: space-between;
 }
 
-<<<<<<< Updated upstream
 #modal-config>.modal-header>h2 {
     text-align: center;
 }
@@ -109,31 +93,12 @@
 }
 
 .modal-header {
-=======
-@keyframes mostrarModal {
-    from {
-        opacity: 0;
-        transform: translate3d(0, -20px, -5px);
-    }
-    to {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-    }
-}
-
-.mostrar #modal {
-    animation: mostrarModal 0.5s;
-}
-
-#modal-header {
->>>>>>> Stashed changes
     align-items: center;
     padding-bottom: 1em;
 }
 
 #modal-alt-btn {
     font-weight: bold;
-<<<<<<< Updated upstream
     background-color: rgb(255, 149, 149);
     border-style: solid;
     border-width: 3px;
@@ -303,34 +268,12 @@
 
 #modal-info>.modal-footer>button {
     width: 100%;
-=======
-    background-color: rgb(0, 0, 255);
-    border-style: ridge;
-    border-color: rgb(0, 0, 255);
 }
 
-#modal-alt-btn:hover {
-    border-style: ridge;
-    border-color: rgb(0, 0, 107);
-    background-color: rgb(0, 0, 173);
+#modal-btn-fechar-info {
+    background-color: rgba(20, 74, 173, 0.527);
 }
 
-#modal-close-btn {
-    border-style: ridge;
-    border-color: rgba(255, 0, 0, 0.588);
-    background-color: rgba(255, 0, 0, 0.588);
-    font-weight: bold;
-}
-
-#modal-close-btn:hover {
-    border-style: ridge;
-    border-color: rgb(255, 0, 0);
-}
-
-#modal-footer {
-    padding-top: 1em;
-    display: flex;
-    justify-content: start;
-    gap: 5px;
->>>>>>> Stashed changes
+#modal-btn-fechar-info:hover {
+    background-color: rgb(20, 74, 173);
 }

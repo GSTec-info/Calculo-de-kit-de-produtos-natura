@@ -22,7 +22,6 @@
     padding: 0;
     box-sizing: content-box;
     text-decoration: none;
-    animation: mostrar 1s;
 }
 
 body {
@@ -321,10 +320,7 @@ label {
     color: white;
     border-radius: 8px;
     cursor: pointer;
-<<<<<<< Updated upstream
     align-items: center;
-=======
->>>>>>> Stashed changes
 }
 
 .botao:hover {
