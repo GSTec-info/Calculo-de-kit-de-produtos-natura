@@ -6,6 +6,7 @@
 :root {
     --fonte-padrao: src_calibri, sans-serif;
     --Sombra-padrao: 0px 0px 10px rgba(0, 0, 0, 0.205);
+    --Color-Global: rgb(76, 137, 172);
 }
 
 @keyframes mostrar {
@@ -26,7 +27,7 @@
 
 body {
     font-family: var(--fonte-padrao);
-    background-color: rgb(76, 137, 172);
+    background-color: var(--Color-Global);
 }
 
 main {
@@ -121,16 +122,23 @@ input {
     margin-top: 0.5em;
 }
 
-.item_qtdProd>input {
+input[type="radio"] {
+    appearance: none;
     box-shadow: none;
     width: 0.6em;
     height: 0.6em;
     align-items: center;
     margin-bottom: 0px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 42, 78, 0.651);
+}
+
+input[type="radio"]:checked {
+    background: radial-gradient(var(--Color-Global) 45%, white 50%);
 }
 
 .item_qtdProd>label {
-    font-size: 0.8em;
+    font-size: 0.9em;
 }
 
 #div_porcent {
