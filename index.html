@@ -50,8 +50,9 @@
     <h1>Cálculo de KIT</h1>
     <div id="div_botao">
         <img id="icon-config" onclick="abreConfig()" src="./images/icon-config.png" alt="Config">
-        <button onclick="abreCalc()" class="botao">Calc</button>
+        <button onclick="abreCalc()" class="botao" style="display: none;">Calc</button>
         <button onclick="abreInfo()" class="botao">Informações</button>
+        <button onclick="abreCalc()" class="botao">Calc</button>
     </div>
     <main>
         <div id="div_calculo">
@@ -150,24 +151,27 @@
             </div>
             <div class="modal-body">
                 <div id="display-calc">
+                    <p id="titulo-exp">Operação</p>
+                    <span id="expressao"></span>
                     <span id="res-calc"></span>
+                    <p style="display: flex; justify-content: flex-end;">Resultado</p>
                 </div>
                 <div id="botoes-calc">
-                    <div class="linha-numerica">
-                        <button class="btn-action" id="btn-clear" onclick="clearCalc()">C</button>
-                        <button class="btn-action" id="btn-back" onclick="backCalc()">&larr;</button>
+                    <div class="linha-numerica" id="linha-numerica-1">
+                        <button class="btn-action" id="btn-clear">C</button>
+                        <a class="btn-action" id="btn-back">←</a>
                     </div>
                     <div class="linha-numerica">
                         <button id="btn-calc-7" class="btn-num">7</button>
                         <button id="btn-calc-8" class="btn-num">8</button>
                         <button id="btn-calc-9" class="btn-num">9</button>
-                        <button id="btn-div" class="btn-action">&divide;</button>
+                        <button id="btn-div" class="btn-action">/</button>
                     </div>
                     <div class="linha-numerica">
                         <button id="btn-calc-4" class="btn-num">4</button>
                         <button id="btn-calc-5" class="btn-num">5</button>
                         <button id="btn-calc-6" class="btn-num">6</button>
-                        <button id="btn-calc-mult" class="btn-action">x</button>
+                        <button id="btn-calc-mult" class="btn-action">*</button>
                     </div>
                     <div class="linha-numerica">
                         <button id="btn-calc-1" class="btn-num">1</button>
@@ -176,15 +180,15 @@
                         <button id="btn-calc-sub" class="btn-action">-</button>
                     </div>
                     <div class="linha-numerica">
-                        <button id="btn-calc-0" class="btn-num">0</button>
+                        <button id="btn-calc-0" class="btn-num" onclick="click_0()">0</button>
                         <button id="btn-calc-ponto" class="btn-num">.</button>
-                        <button id="btn-calc-igual" class="btn-action">=</button>
-                        <button id="btn-calc-add" class="btn-action">+</button>
+                        <button id="btn-calc-igual" class="btn-action" style="display: none;">=</button>
+                        <button id="btn-calc-som" class="btn-action">+</button>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button id="modal-btn-fechar-calc" class="botao" onclick="abreCalc()">Fechar</button>
+                <a id="modal-btn-fechar-calc" class="botao" onclick="abreCalc()">Fechar</a>
             </div>
         </div>
     </div>
@@ -208,6 +212,7 @@
 
     <script src="./js/index.js"></script>
     <script src="./js/elements.js"></script>
+    <script src="./js/calculadora.js"></script>
 
 </body>
 

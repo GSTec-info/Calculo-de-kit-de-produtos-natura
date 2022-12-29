@@ -31,7 +31,3 @@ function abreInfo() {
         }
     })
 }
-
-function calc() {
-
-}
