@@ -1,6 +1,6 @@
 const result = document.getElementById("res-calc")
 const display_expressao = document.getElementById("expressao");
-var expressao = display_expressao.innerText;
+let expressao = display_expressao.innerText;
 
 
 document.querySelectorAll('.btn-action').forEach(item => {
@@ -16,7 +16,7 @@ document.querySelectorAll('.btn-action').forEach(item => {
             case 'C':
                 expressao = ''
 
-                display_expressao.innerText = expressao;
+                display_expressao.innerHTML = expressao;
                 display_expressao.style.height = '1em'
                 display_expressao.style.fontSize = '18px'
                 display_expressao.style.width = '277px'
@@ -39,7 +39,7 @@ document.querySelectorAll('.btn-action').forEach(item => {
                 break;
 
             default:
-                expressao += item.innerText;
+                expressao += item.innerHTML;
                 result.innerText = '=   ' + eval(expressao).toLocaleString('pt-BR', { style: 'decimal' });;
                 display_expressao.innerText = expressao;
         }

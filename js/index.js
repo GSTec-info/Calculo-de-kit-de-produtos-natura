@@ -112,6 +112,11 @@ function calcula() {
             minimumFractionDigits: 2
         })
     } else {
+        resultCalculo.vlrVenda.innerText = vlrCusto.toLocaleString('pt-BR', {
+            style: 'currency',
+            currency: 'BRL',
+            minimumFractionDigits: 2
+        })
         resultCalculo.vlrGanho.innerText = "Ganho de: R$ 0,00"
     }
 
@@ -186,6 +191,11 @@ function calcula() {
             valorSugerido.vlr2.innerText = ""
             valorSugerido.vlr3.innerText = ""
             valorSugerido.vlr4.innerText = ""
+            resultCalculo.vlrVenda.innerText = vlrCusto.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL',
+                minimumFractionDigits: 2
+            })
             resultCalculo.vlrGanho.innerText = "Ganho de: R$ 0,00"
 
 
@@ -283,6 +293,11 @@ function calcula() {
             valorSugerido.vlr2.innerText = ""
             valorSugerido.vlr3.innerText = ""
             valorSugerido.vlr4.innerText = ""
+            resultCalculo.vlrVenda.innerText = vlrCusto.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL',
+                minimumFractionDigits: 2
+            })
             resultCalculo.vlrGanho.innerText = "Ganho de: R$ 0,00"
 
 
@@ -392,6 +407,11 @@ function calcula() {
             valorSugerido.vlr2.innerText = ""
             valorSugerido.vlr3.innerText = ""
             valorSugerido.vlr4.innerText = ""
+            resultCalculo.vlrVenda.innerText = vlrCusto.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL',
+                minimumFractionDigits: 2
+            })
             resultCalculo.vlrGanho.innerText = "Ganho de: R$ 0,00"
         }
         //----------------------------------------
