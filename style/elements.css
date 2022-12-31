@@ -103,6 +103,9 @@
     border-style: solid;
     border-width: 3px;
     border-color: rgb(255, 149, 149);
+    width: 100%;
+    align-items: center;
+    text-align: center;
 }
 
 #modal-alt-btn:hover {
@@ -226,8 +229,6 @@
     display: flex;
     font-weight: bold;
     color: rgb(255, 255, 255);
-    background-color: rgb(255, 118, 118);
-    border: none;
     font-size: 1.2em;
     padding: 1em;
     width: 100%;
@@ -237,10 +238,19 @@
     text-align: center;
     justify-content: center;
     align-items: center;
+    background-color: rgb(255, 149, 149);
+    border-style: solid;
+    border-width: 3px;
+    border-color: rgb(255, 149, 149);
+    width: 100%;
 }
 
 #modal-btn-fechar-calc:hover {
-    background-color: rgb(252, 71, 71);
+    /*background-color: rgb(252, 71, 71);*/
+    border-style: solid;
+    border-color: rgb(107, 0, 0);
+    border-width: 3px;
+    background-color: rgb(255, 0, 0);
 }
 
 #modal-container-info {
@@ -309,6 +319,9 @@
 
 #modal-btn-fechar-info {
     background-color: rgba(20, 74, 173, 0.527);
+    width: 100%;
+    align-items: center;
+    text-align: center;
 }
 
 #modal-btn-fechar-info:hover {

@@ -51,7 +51,7 @@
     <div id="div_botao">
         <img id="icon-config" onclick="abreConfig()" src="./images/icon-config.png" alt="Config">
         <img src="./images/icon-info.png" alt="Info" onclick="abreInfo()" class="botao" id="info">
-        <button onclick="abreCalc()" class="botao">Calculadora</button>
+        <a onclick="abreCalc()" class="botao">Calculadora</a>
     </div>
     <main>
         <div id="div_calculo">
@@ -138,7 +138,7 @@
                 <input type="number" inputmode="decimal" min="0" max="100" step=".01" name="porcent_revend" id="porcent_revend" onkeyup="calcula()" value="30">
             </div>
             <div class="modal-footer">
-                <button id="modal-alt-btn" class="botao" onclick="abreConfig()">Fechar</button>
+                <a id="modal-alt-btn" class="botao" onclick="abreConfig()">Fechar</a>
             </div>
         </div>
     </div>
@@ -157,32 +157,32 @@
                 </div>
                 <div id="botoes-calc">
                     <div class="linha-numerica" id="linha-numerica-1">
-                        <button class="btn-action" id="btn-clear">C</button>
+                        <a class="btn-action" id="btn-clear">C</a>
                         <a class="btn-action" id="btn-back">←</a>
                     </div>
                     <div class="linha-numerica">
-                        <button id="btn-calc-7" class="btn-num">7</button>
-                        <button id="btn-calc-8" class="btn-num">8</button>
-                        <button id="btn-calc-9" class="btn-num">9</button>
-                        <button id="btn-div" class="btn-action">/</button>
+                        <a id="btn-calc-7" class="btn-num">7</a>
+                        <a id="btn-calc-8" class="btn-num">8</a>
+                        <a id="btn-calc-9" class="btn-num">9</a>
+                        <a id="btn-div" class="btn-action">/</a>
                     </div>
                     <div class="linha-numerica">
-                        <button id="btn-calc-4" class="btn-num">4</button>
-                        <button id="btn-calc-5" class="btn-num">5</button>
-                        <button id="btn-calc-6" class="btn-num">6</button>
-                        <button id="btn-calc-mult" class="btn-action">*</button>
+                        <a id="btn-calc-4" class="btn-num">4</a>
+                        <a id="btn-calc-5" class="btn-num">5</a>
+                        <a id="btn-calc-6" class="btn-num">6</a>
+                        <a id="btn-calc-mult" class="btn-action">*</a>
                     </div>
                     <div class="linha-numerica">
-                        <button id="btn-calc-1" class="btn-num">1</button>
-                        <button id="btn-calc-2" class="btn-num">2</button>
-                        <button id="btn-calc-3" class="btn-num">3</button>
-                        <button id="btn-calc-sub" class="btn-action">-</button>
+                        <a id="btn-calc-1" class="btn-num">1</a>
+                        <a id="btn-calc-2" class="btn-num">2</a>
+                        <a id="btn-calc-3" class="btn-num">3</a>
+                        <a id="btn-calc-sub" class="btn-action">-</a>
                     </div>
                     <div class="linha-numerica">
-                        <button id="btn-calc-0" class="btn-num" onclick="click_0()">0</button>
-                        <button id="btn-calc-ponto" class="btn-num">.</button>
-                        <button id="btn-calc-igual" class="btn-action" style="display: none;">=</button>
-                        <button id="btn-calc-som" class="btn-action">+</button>
+                        <a id="btn-calc-0" class="btn-num" onclick="click_0()">0</a>
+                        <a id="btn-calc-ponto" class="btn-num">.</a>
+                        <a id="btn-calc-igual" class="btn-action" style="display: none;">=</a>
+                        <a id="btn-calc-som" class="btn-action">+</a>
                     </div>
                 </div>
             </div>
@@ -204,7 +204,7 @@
                 <p>3. Caso necessite trocar a porcentagem de desconto, vá no ícone de "engrenagem" para fazer a alteração</p>
             </div>
             <div class="modal-footer">
-                <button id="modal-btn-fechar-info" class="botao" onclick="abreInfo()">OK</button>
+                <a id="modal-btn-fechar-info" class="botao" onclick="abreInfo()">OK</a>
             </div>
         </div>
     </div>
